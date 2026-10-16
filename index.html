@@ -175,6 +175,14 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
 .btns [data-m="candy"] .tag{--bh:28px;padding:6px 12px 3px}
 .pack .pp b,.tier b{font-family:var(--font-display);font-weight:1000}
 
+/* ---------- hover without scaling: sliced images must stay on whole pixels, or seams show between the slices ---------- */
+.btns [data-m="candy"] :is(.btn,.chip,.slot),.plates [data-m="candy"] :is(.card,.surf){transition:top .15s ease,filter .15s ease}
+.btns [data-m="candy"] :is(.btn,.chip):hover,.btns [data-m="candy"] .slot:not([disabled]):hover{transform:none;top:-2px;filter:brightness(1.05) drop-shadow(0 9px 9px rgba(40,10,70,.26))}
+.btns [data-m="candy"] :is(.btn,.chip):active,.btns [data-m="candy"] .slot:not([disabled]):active{transform:none;top:1px;filter:brightness(.97) drop-shadow(0 3px 4px rgba(40,10,70,.22))}
+.plates [data-m="candy"] .card:hover{transform:none;top:-4px}
+.plates [data-m="candy"] .surf:hover{animation:none}
+.btns [data-m="candy"] :is(.btn,.chip,.pill,.tag){backface-visibility:hidden}
+
 /* ---------- header ---------- */
 header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;padding-block:12px}
 .bar{display:flex;align-items:center;gap:12px;border-radius:999px;padding:8px 8px 8px 18px;

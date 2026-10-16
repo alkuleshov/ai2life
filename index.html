@@ -134,23 +134,46 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
 @media (prefers-color-scheme: dark){.plates:root:not([data-theme="light"]) [data-m="candy"] :is(.course .r,.pack,.panel,.sheet){--plate:url(assets/candy/plate-violet.webp)}}
 .plates:root[data-theme="dark"] [data-m="candy"] :is(.course .r,.pack,.panel,.sheet){--plate:url(assets/candy/plate-violet.webp)}
 
-.btns [data-m="candy"] :is(.btn,.chip:not(.eyebrow),.pill,.tag){--bh:48px;background:none!important;box-shadow:none!important;border:0 solid transparent;
+.btns [data-m="candy"] :is(.btn,.chip:not(.eyebrow),.pill,.tag){background:none!important;box-shadow:none!important;border:0 solid transparent;
   border-image:var(--bimg,url(assets/candy/btn-sun.webp)) 0 86 fill / 0 calc(var(--bh)*.5) stretch;filter:drop-shadow(0 6px 6px rgba(40,10,70,.22))}
 .btns [data-m="candy"] :is(.btn,.chip:not(.eyebrow))::before,.btns [data-m="candy"] :is(.btn,.chip:not(.eyebrow))::after{display:none}
-.btns [data-m="candy"] .btn-sm{--bh:37px}
-.btns [data-m="candy"] .icon-btn{--bh:42px}
-.btns [data-m="candy"] .close{--bh:42px}
 .btns [data-m="candy"] :is(.btn-ink,.chip[aria-pressed="true"]){--bimg:url(assets/candy/btn-violet.webp)}
 .btns [data-m="candy"] :is(.btn-plain,.chip:not([aria-pressed="true"])){--bimg:url(assets/candy/btn-white.webp)}
-.btns [data-m="candy"] .chip{--bh:37px}
-.btns [data-m="candy"] .pill{--bh:32px;--bimg:url(assets/candy/btn-violet.webp);padding:3px 13px}
-.btns [data-m="candy"] .tag{--bh:26px;--bimg:url(assets/candy/btn-white.webp);padding:4px 12px}
 .btns [data-m="candy"] .tag.soon{--bimg:url(assets/candy/btn-violet.webp)}
+/* text sits on the body of the candy, below the top highlight: fixed height, more room on top, rounded display face */
+.btns [data-m="candy"] :is(.btn,.chip:not(.eyebrow),.pill,.tag){--bh:48px;height:var(--bh);line-height:1;padding:calc(var(--bh)*.12) calc(var(--bh)*.52) 0;
+  font-family:var(--font-display);font-weight:900;letter-spacing:.005em;font-variant-numeric:tabular-nums lining-nums;white-space:nowrap}
+.btns [data-m="candy"] .btn.btn{--bh:54px;font-size:17px}
+.btns [data-m="candy"] .btn.btn-sm{--bh:44px;font-size:15px}
+.btns [data-m="candy"] .btn:is(.icon-btn,.close){--bh:46px;width:46px;padding:calc(var(--bh)*.1) 0 0}
+.btns [data-m="candy"] .chip.chip:not(.eyebrow){--bh:42px;font-size:15px;font-weight:800}
+.btns [data-m="candy"] .pill.pill{--bh:42px;--bimg:url(assets/candy/btn-violet.webp);font-size:20px;display:inline-flex;align-items:center}
+.btns [data-m="candy"] .tag.tag{--bh:30px;--bimg:url(assets/candy/btn-white.webp);font-size:12px;font-weight:900;display:inline-flex;align-items:center}
+.btns [data-m="candy"] .tag.soon{color:#fff}
+.btns [data-m="candy"] :is(.btn-ink,.chip[aria-pressed="true"],.pill,.tag.soon){color:#fff;text-shadow:0 1px 0 rgba(20,6,60,.55),0 2px 6px rgba(20,6,60,.35)}
+.btns [data-m="candy"] :is(.btn:not(.btn-ink):not(.btn-plain)){color:#3A1E00;text-shadow:0 1px 0 rgba(255,255,255,.55)}
+.btns [data-m="candy"] :is(.btn-plain,.chip:not([aria-pressed="true"]):not(.eyebrow),.tag:not(.soon)){color:#2A1E5C;text-shadow:0 1px 0 rgba(255,255,255,.8)}
+
 .plates [data-m="candy"] .eyebrow{--bimg:url(assets/candy/plate-lime.webp);border-image-slice:66 fill;border-image-width:14px;padding:8px 16px}
 .plates [data-m="candy"] .slot{background:none;box-shadow:none;border:0 solid transparent;border-image:url(assets/candy/plate-lime.webp) 66 fill / 14px stretch;filter:drop-shadow(0 5px 5px rgba(40,10,70,.2))}
 .plates [data-m="candy"] .slot.mine{border-image-source:url(assets/candy/plate-violet.webp)}
 .plates [data-m="candy"] .slot[disabled]{border-image:none;filter:none}
 
+
+/* ---------- button & price type: rounded Nunito matches the candy shapes; text sits below the top highlight ---------- */
+.btn,.chip:not(.eyebrow){font-family:var(--font-display);font-weight:900;letter-spacing:.005em}
+.btn{padding:14px 24px 12px}
+.btn-sm{padding:10px 17px 8px;font-size:15px}
+.icon-btn{padding:0}
+.pill{font-family:var(--font-display);font-weight:1000;font-size:20px;letter-spacing:.01em;font-variant-numeric:tabular-nums;padding:7px 15px 4px}
+.btns [data-m="candy"] .pill{--bh:40px;padding:7px 15px 4px}
+.btns [data-m="candy"] :is(.btn-ink,.chip[aria-pressed="true"],.pill,.tag.soon){text-shadow:0 1px 2px rgba(20,6,60,.45)}
+.btns [data-m="candy"] .btn:not(.btn-ink):not(.btn-plain),.btns [data-m="candy"] :is(.btn-plain,.chip:not([aria-pressed="true"]):not(.eyebrow)){text-shadow:0 1px 0 rgba(255,255,255,.55)}
+.btns [data-m="candy"] .btn-sm{--bh:40px}
+.btns [data-m="candy"] .btn:not(.btn-sm):not(.icon-btn):not(.close){--bh:50px}
+.btns [data-m="candy"] .chip:not(.eyebrow){--bh:40px;padding:10px 16px 8px}
+.btns [data-m="candy"] .tag{--bh:28px;padding:6px 12px 3px}
+.pack .pp b,.tier b{font-family:var(--font-display);font-weight:1000}
 
 /* ---------- header ---------- */
 header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;padding-block:12px}

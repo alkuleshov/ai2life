@@ -134,18 +134,18 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
 @media (prefers-color-scheme: dark){.plates:root:not([data-theme="light"]) [data-m="candy"] :is(.course .r,.pack,.panel,.sheet){--plate:url(assets/candy/plate-violet.webp)}}
 .plates:root[data-theme="dark"] [data-m="candy"] :is(.course .r,.pack,.panel,.sheet){--plate:url(assets/candy/plate-violet.webp)}
 
-.plates [data-m="candy"] :is(.btn,.chip,.pill,.tag){--bh:48px;background:none!important;box-shadow:none!important;border:0 solid transparent;
-  border-image:var(--bimg,url(assets/candy/btn-sun.webp)) 108 132 fill / calc(var(--bh)*.42) calc(var(--bh)*.5) stretch;filter:drop-shadow(0 6px 6px rgba(40,10,70,.22))}
-.plates [data-m="candy"] :is(.btn,.chip,.slot)::before,.plates [data-m="candy"] :is(.btn,.chip,.slot)::after{display:none}
-.plates [data-m="candy"] .btn-sm{--bh:37px}
-.plates [data-m="candy"] .icon-btn{--bh:42px}
-.plates [data-m="candy"] .close{--bh:42px}
-.plates [data-m="candy"] :is(.btn-ink,.chip[aria-pressed="true"]){--bimg:url(assets/candy/btn-violet.webp)}
-.plates [data-m="candy"] :is(.btn-plain,.chip:not([aria-pressed="true"]):not(.eyebrow)){--bimg:url(assets/candy/btn-white.webp)}
-.plates [data-m="candy"] .chip{--bh:37px}
-.plates [data-m="candy"] .pill{--bh:32px;--bimg:url(assets/candy/btn-violet.webp);padding:3px 13px}
-.plates [data-m="candy"] .tag{--bh:26px;--bimg:url(assets/candy/btn-white.webp);padding:4px 12px}
-.plates [data-m="candy"] .tag.soon{--bimg:url(assets/candy/btn-violet.webp)}
+.btns [data-m="candy"] :is(.btn,.chip:not(.eyebrow),.pill,.tag){--bh:48px;background:none!important;box-shadow:none!important;border:0 solid transparent;
+  border-image:var(--bimg,url(assets/candy/btn-sun.webp)) 0 86 fill / 0 calc(var(--bh)*.5) stretch;filter:drop-shadow(0 6px 6px rgba(40,10,70,.22))}
+.btns [data-m="candy"] :is(.btn,.chip:not(.eyebrow))::before,.btns [data-m="candy"] :is(.btn,.chip:not(.eyebrow))::after{display:none}
+.btns [data-m="candy"] .btn-sm{--bh:37px}
+.btns [data-m="candy"] .icon-btn{--bh:42px}
+.btns [data-m="candy"] .close{--bh:42px}
+.btns [data-m="candy"] :is(.btn-ink,.chip[aria-pressed="true"]){--bimg:url(assets/candy/btn-violet.webp)}
+.btns [data-m="candy"] :is(.btn-plain,.chip:not([aria-pressed="true"])){--bimg:url(assets/candy/btn-white.webp)}
+.btns [data-m="candy"] .chip{--bh:37px}
+.btns [data-m="candy"] .pill{--bh:32px;--bimg:url(assets/candy/btn-violet.webp);padding:3px 13px}
+.btns [data-m="candy"] .tag{--bh:26px;--bimg:url(assets/candy/btn-white.webp);padding:4px 12px}
+.btns [data-m="candy"] .tag.soon{--bimg:url(assets/candy/btn-violet.webp)}
 .plates [data-m="candy"] .eyebrow{--bimg:url(assets/candy/plate-lime.webp);border-image-slice:66 fill;border-image-width:14px;padding:8px 16px}
 .plates [data-m="candy"] .slot{background:none;box-shadow:none;border:0 solid transparent;border-image:url(assets/candy/plate-lime.webp) 66 fill / 14px stretch;filter:drop-shadow(0 5px 5px rgba(40,10,70,.2))}
 .plates [data-m="candy"] .slot.mine{border-image-source:url(assets/candy/plate-violet.webp)}
@@ -690,6 +690,7 @@ const probe = src => new Promise(res=>{ const i=new Image(); i.onload=()=>res(i.
     Object.entries(spots).forEach(([g,[x,y,w,r]],i)=>{ if(!ASSETS[g]) return; const d=document.createElement("span"); d.className="toy"; d.setAttribute("aria-hidden","true");
       d.style.cssText=`left:${x}%;top:${y}%;width:${w}%;rotate:${r}deg;animation-delay:${-i*1.1}s`; d.innerHTML=`<img src="${ASSETS[g]}" alt="">`; board.appendChild(d); });
   }
+  if(await probe("assets/candy/btn-sun.webp")) document.documentElement.classList.add("btns");
   if(await probe("assets/candy/plate-sun.webp")) document.documentElement.classList.add("plates");
   const tex = await probe("assets/candy/tex.png");
   if(tex) document.documentElement.style.setProperty("--plush-tex",`url("${tex}")`);

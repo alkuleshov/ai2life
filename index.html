@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@800;900;1000&family=Onest:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
 <style>
-/* Layout: plush-pillow world — every surface is velvet fabric inflated like a cushion with a stitched seam; colour blobs float behind */
+/* Layout: candy world — every surface is glossy lacquered plastic, inflated, with a bright highlight on top; colour blobs float behind */
 :root{
   --bg:#F5F2FB; --fg:#1B1530; --muted:#5B5378; --slab:#FFFFFF; --ink:#1B1530;
   --lime:#B9EC4A; --sky:#5CC6FF; --pink:#FF6FAF; --orange:#FF8A3D; --lilac:#B29BFF; --sun:#FFD23F; --violet:#6A3DF0; --blue:#2F6BFF;
@@ -94,65 +94,62 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
 .tag{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#1B1530;background:rgba(255,255,255,.7);border-radius:999px;padding:4px 11px;box-shadow:inset 0 1px 1px #fff,0 1px 2px rgba(0,0,0,.12)}
 .tag.soon{background:#1B1530;color:#fff}
 
-/* ---------- PLUSH PILLOW — velvet fabric as the base, inflated pillow volume and a stitched seam ---------- */
-:root{--plush-tex:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.3' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1.4 0 0 0 -.55'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-[data-m="plush"] .surf{background:none;box-shadow:none;border-radius:34px}
-[data-m="plush"] .surf::before{inset:0;z-index:-1;filter:url(#f-fuzz);
-  background:var(--plush-tex),radial-gradient(85% 75% at 48% 40%,color-mix(in oklab,var(--c),white 26%) 0%,var(--c) 58%,color-mix(in oklab,var(--c),#2a0024 34%) 100%);
-  background-size:220px 220px,auto;background-blend-mode:soft-light,normal;
-  box-shadow:inset 0 14px 24px rgba(255,255,255,.32),inset 0 -22px 34px rgba(40,0,30,.34),inset 18px 0 26px -16px rgba(40,0,30,.18),inset -18px 0 26px -16px rgba(40,0,30,.18),0 22px 34px -16px rgba(60,0,40,.42)}
-[data-m="plush"] .surf::after{inset:11px;border-radius:24px;z-index:0;border:2.5px dashed color-mix(in oklab,var(--c),white 62%);
-  box-shadow:0 1.5px 0 rgba(40,0,30,.16),inset 0 1.5px 0 rgba(40,0,30,.16)}
-[data-m="plush"] :is(.btn,.chip,.slot){
-  background:var(--plush-tex),radial-gradient(100% 90% at 50% 35%,color-mix(in oklab,var(--c),white 22%),var(--c) 62%,var(--lo));
-  background-size:140px 140px,auto;background-blend-mode:soft-light,normal;
-  box-shadow:inset 0 3px 6px rgba(255,255,255,.34),inset 0 -6px 10px rgba(40,0,30,.3),0 10px 16px -8px rgba(60,0,40,.5)}
-[data-m="plush"] :is(.btn,.chip,.slot)::after{inset:4px;border:1.5px dashed color-mix(in oklab,var(--c),white 58%);z-index:-1}
-[data-m="plush"] .puff{filter:url(#f-soft)}
-[data-m="plush"] :is(.course .r,.pack:not(.hot),.panel,.sheet){--c:#F1EAFF}
-:root[data-theme="dark"] [data-m="plush"] :is(.course .r,.pack:not(.hot),.panel,.sheet){--c:#3A2F63}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) [data-m="plush"] :is(.course .r,.pack:not(.hot),.panel,.sheet){--c:#3A2F63}}
-.pill{background:var(--plush-tex),linear-gradient(180deg,#4B3F80 0%,#241A47 55%,#160F2C 100%);background-size:120px 120px,auto;background-blend-mode:soft-light,normal}
-#hero-word.has-img{display:block;padding:.06em 0 .1em;margin-left:-.04em}
-#hero-word.has-img img{display:block;width:min(100%,640px);height:auto;filter:drop-shadow(0 14px 14px rgba(120,20,70,.28))}
+/* ---------- CANDY — glossy lacquered inflated plastic ---------- */
+[data-m="candy"] .surf{
+  background:radial-gradient(120% 70% at 30% 0%,color-mix(in oklab,var(--c),white 55%) 0%,transparent 55%),linear-gradient(180deg,color-mix(in oklab,var(--c),white 15%),var(--c) 45%,var(--lo));
+  box-shadow:inset 0 8px 14px rgba(255,255,255,.55),inset 0 -14px 24px color-mix(in oklab,var(--c),#2a0030 38%),inset 0 0 0 1px rgba(255,255,255,.35),0 22px 34px -14px color-mix(in oklab,var(--c),#2a0040 60%)}
+[data-m="candy"] .surf::before{top:10px;left:22px;width:42%;height:20px;border-radius:999px;background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(255,255,255,0));filter:blur(.5px)}
+[data-m="candy"] .surf::after{top:14px;right:26px;width:12px;height:12px;background:rgba(255,255,255,.85);box-shadow:-14px 6px 0 -3px rgba(255,255,255,.6)}
+[data-m="candy"] :is(.btn,.chip,.slot){
+  background:radial-gradient(120% 90% at 50% 0%,color-mix(in oklab,var(--c),white 50%) 0%,transparent 60%),linear-gradient(180deg,var(--c),var(--lo));
+  box-shadow:inset 0 3px 4px rgba(255,255,255,.6),inset 0 -5px 8px color-mix(in oklab,var(--c),#200028 35%),0 10px 16px -8px color-mix(in oklab,var(--c),#200040 60%)}
+[data-m="candy"] :is(.btn,.chip,.slot)::before{inset:3px 14% auto 14%;height:38%;background:linear-gradient(180deg,rgba(255,255,255,.85),rgba(255,255,255,0));z-index:-1}
+[data-m="candy"] .puff{filter:url(#f-candy)}
 
+[data-m="candy"] :is(.course .r,.pack,.panel,.sheet){--t:#1B1530}
+[data-m="candy"] .pack.hot{--t:#FFFFFF}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) [data-m="candy"] :is(.course .r,.pack,.panel,.sheet){--t:#F3EEFF}}
+:root[data-theme="dark"] [data-m="candy"] :is(.course .r,.pack,.panel,.sheet){--t:#F3EEFF}
+[data-m="candy"] .course .l .puff{color:#FFFFFF}
+#hero-word.has-img img{filter:drop-shadow(0 14px 14px rgba(150,40,20,.25))}
 
-/* ---------- generated plush plates (9-slice): corners and seam stay intact, only the middle stretches ---------- */
-[data-m="plush"] .surf{--pw:34px;background:none!important;box-shadow:none!important;border:0 solid transparent;
+/* ---------- generated candy plates (9-slice, active once assets/candy/ exists): corners and seam stay intact, only the middle stretches ---------- */
+.plates [data-m="candy"] .surf{--pw:34px;background:none!important;box-shadow:none!important;border:0 solid transparent;
   border-image:var(--plate) 66 fill / var(--pw) stretch;filter:drop-shadow(0 14px 14px rgba(40,10,70,.22))}
-[data-m="plush"] .surf::before,[data-m="plush"] .surf::after{display:none}
-[data-m="plush"] .surf[style*="--lime"],.st2,[data-m="plush"] .faq > div:nth-child(4){--plate:url(assets/plate-lime.webp)}
-[data-m="plush"] .surf[style*="--sky"],.st1,[data-m="plush"] .faq > div:nth-child(1){--plate:url(assets/plate-sky.webp)}
-[data-m="plush"] .surf[style*="--pink"],[data-m="plush"] .course .l{--plate:url(assets/plate-pink.webp)}
-[data-m="plush"] .surf[style*="--orange"]{--plate:url(assets/plate-orange.webp)}
-[data-m="plush"] .surf[style*="--lilac"],[data-m="plush"] .faq > div:nth-child(2){--plate:url(assets/plate-lilac.webp)}
-[data-m="plush"] .surf[style*="--sun"],.st3,[data-m="plush"] .faq > div:nth-child(3){--plate:url(assets/plate-sun.webp)}
-[data-m="plush"] :is(.course .r,.pack,.panel,.sheet){--plate:url(assets/plate-lavender.webp);--pw:40px}
-[data-m="plush"] .pack.hot{--plate:url(assets/plate-violet.webp)}
-[data-m="plush"] :is(.course .r,.pack,.panel,.sheet){--t:#1B1530}
-[data-m="plush"] .pack.hot{--t:#FFFFFF}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) [data-m="plush"] :is(.course .r,.pack,.panel,.sheet){--t:#F3EEFF}}
-:root[data-theme="dark"] [data-m="plush"] :is(.course .r,.pack,.panel,.sheet){--t:#F3EEFF}
-[data-m="plush"] .course .l{--pw:44px}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) [data-m="plush"] :is(.course .r,.pack,.panel,.sheet){--plate:url(assets/plate-violet.webp)}}
-:root[data-theme="dark"] [data-m="plush"] :is(.course .r,.pack,.panel,.sheet){--plate:url(assets/plate-violet.webp)}
+.plates [data-m="candy"] .surf::before,.plates [data-m="candy"] .surf::after{display:none}
+.plates [data-m="candy"] .surf[style*="--lime"],.plates .st2,.plates [data-m="candy"] .faq > div:nth-child(4){--plate:url(assets/candy/plate-lime.webp)}
+.plates [data-m="candy"] .surf[style*="--sky"],.plates .st1,.plates [data-m="candy"] .faq > div:nth-child(1){--plate:url(assets/candy/plate-sky.webp)}
+.plates [data-m="candy"] .surf[style*="--pink"],.plates [data-m="candy"] .course .l{--plate:url(assets/candy/plate-pink.webp)}
+.plates [data-m="candy"] .surf[style*="--orange"]{--plate:url(assets/candy/plate-orange.webp)}
+.plates [data-m="candy"] .surf[style*="--lilac"],.plates [data-m="candy"] .faq > div:nth-child(2){--plate:url(assets/candy/plate-lilac.webp)}
+.plates [data-m="candy"] .surf[style*="--sun"],.plates .st3,.plates [data-m="candy"] .faq > div:nth-child(3){--plate:url(assets/candy/plate-sun.webp)}
+.plates [data-m="candy"] :is(.course .r,.pack,.panel,.sheet){--plate:url(assets/candy/plate-lavender.webp);--pw:40px}
+.plates [data-m="candy"] .pack.hot{--plate:url(assets/candy/plate-violet.webp)}
+.plates [data-m="candy"] :is(.course .r,.pack,.panel,.sheet){--t:#1B1530}
+.plates [data-m="candy"] .pack.hot{--t:#FFFFFF}
+@media (prefers-color-scheme: dark){.plates:root:not([data-theme="light"]) [data-m="candy"] :is(.course .r,.pack,.panel,.sheet){--t:#F3EEFF}}
+.plates:root[data-theme="dark"] [data-m="candy"] :is(.course .r,.pack,.panel,.sheet){--t:#F3EEFF}
+.plates [data-m="candy"] .course .l{--pw:44px}
+@media (prefers-color-scheme: dark){.plates:root:not([data-theme="light"]) [data-m="candy"] :is(.course .r,.pack,.panel,.sheet){--plate:url(assets/candy/plate-violet.webp)}}
+.plates:root[data-theme="dark"] [data-m="candy"] :is(.course .r,.pack,.panel,.sheet){--plate:url(assets/candy/plate-violet.webp)}
 
-[data-m="plush"] :is(.btn,.chip,.pill,.tag){--bh:48px;background:none!important;box-shadow:none!important;border:0 solid transparent;
-  border-image:var(--bimg,url(assets/btn-sun.webp)) 108 132 fill / calc(var(--bh)*.42) calc(var(--bh)*.5) stretch;filter:drop-shadow(0 6px 6px rgba(40,10,70,.22))}
-[data-m="plush"] :is(.btn,.chip,.slot)::before,[data-m="plush"] :is(.btn,.chip,.slot)::after{display:none}
-[data-m="plush"] .btn-sm{--bh:37px}
-[data-m="plush"] .icon-btn{--bh:42px}
-[data-m="plush"] .close{--bh:42px}
-[data-m="plush"] :is(.btn-ink,.chip[aria-pressed="true"]){--bimg:url(assets/btn-violet.webp)}
-[data-m="plush"] :is(.btn-plain,.chip:not([aria-pressed="true"]):not(.eyebrow)){--bimg:url(assets/btn-white.webp)}
-[data-m="plush"] .chip{--bh:37px}
-[data-m="plush"] .pill{--bh:32px;--bimg:url(assets/btn-violet.webp);padding:3px 13px}
-[data-m="plush"] .tag{--bh:26px;--bimg:url(assets/btn-white.webp);padding:4px 12px}
-[data-m="plush"] .tag.soon{--bimg:url(assets/btn-violet.webp)}
-[data-m="plush"] .eyebrow{--bimg:url(assets/plate-lime.webp);border-image-slice:66 fill;border-image-width:14px;padding:8px 16px}
-[data-m="plush"] .slot{background:none;box-shadow:none;border:0 solid transparent;border-image:url(assets/plate-lime.webp) 66 fill / 14px stretch;filter:drop-shadow(0 5px 5px rgba(40,10,70,.2))}
-[data-m="plush"] .slot.mine{border-image-source:url(assets/plate-violet.webp)}
-[data-m="plush"] .slot[disabled]{border-image:none;filter:none}
+.plates [data-m="candy"] :is(.btn,.chip,.pill,.tag){--bh:48px;background:none!important;box-shadow:none!important;border:0 solid transparent;
+  border-image:var(--bimg,url(assets/candy/btn-sun.webp)) 108 132 fill / calc(var(--bh)*.42) calc(var(--bh)*.5) stretch;filter:drop-shadow(0 6px 6px rgba(40,10,70,.22))}
+.plates [data-m="candy"] :is(.btn,.chip,.slot)::before,.plates [data-m="candy"] :is(.btn,.chip,.slot)::after{display:none}
+.plates [data-m="candy"] .btn-sm{--bh:37px}
+.plates [data-m="candy"] .icon-btn{--bh:42px}
+.plates [data-m="candy"] .close{--bh:42px}
+.plates [data-m="candy"] :is(.btn-ink,.chip[aria-pressed="true"]){--bimg:url(assets/candy/btn-violet.webp)}
+.plates [data-m="candy"] :is(.btn-plain,.chip:not([aria-pressed="true"]):not(.eyebrow)){--bimg:url(assets/candy/btn-white.webp)}
+.plates [data-m="candy"] .chip{--bh:37px}
+.plates [data-m="candy"] .pill{--bh:32px;--bimg:url(assets/candy/btn-violet.webp);padding:3px 13px}
+.plates [data-m="candy"] .tag{--bh:26px;--bimg:url(assets/candy/btn-white.webp);padding:4px 12px}
+.plates [data-m="candy"] .tag.soon{--bimg:url(assets/candy/btn-violet.webp)}
+.plates [data-m="candy"] .eyebrow{--bimg:url(assets/candy/plate-lime.webp);border-image-slice:66 fill;border-image-width:14px;padding:8px 16px}
+.plates [data-m="candy"] .slot{background:none;box-shadow:none;border:0 solid transparent;border-image:url(assets/candy/plate-lime.webp) 66 fill / 14px stretch;filter:drop-shadow(0 5px 5px rgba(40,10,70,.2))}
+.plates [data-m="candy"] .slot.mine{border-image-source:url(assets/candy/plate-violet.webp)}
+.plates [data-m="candy"] .slot[disabled]{border-image:none;filter:none}
+
 
 /* ---------- header ---------- */
 header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;padding-block:12px}
@@ -287,7 +284,7 @@ footer .links2{display:grid;gap:6px;font-family:var(--font-mono);font-size:14px;
 .overlay{position:fixed;inset:0;z-index:50;background:var(--scrim);display:grid;place-items:center;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
   padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));overflow-y:auto}
 .sheet{--c:var(--slab);--t:var(--fg);width:min(100%,560px);padding:24px;display:grid;gap:16px;animation:pop .22s cubic-bezier(.3,1.6,.5,1)}
-[data-m="plush"] .sheet{--c:var(--sky)}
+[data-m="candy"] .sheet{--c:var(--sky)}
 .sheet.wide{width:min(100%,940px)}
 @keyframes pop{from{transform:scale(.92) translateY(10px);opacity:0}}
 .sheet-head{display:flex;justify-content:space-between;gap:12px;align-items:start}
@@ -344,6 +341,15 @@ footer .links2{display:grid;gap:6px;font-family:var(--font-mono);font-size:14px;
       <feDisplacementMap in="tex" in2="t2" scale="5" xChannelSelector="R" yChannelSelector="G"/>
       <feDropShadow dx="0" dy="10" stdDeviation="9" flood-color="#3a0028" flood-opacity=".3"/>
     </filter>
+    <filter id="f-candy" x="-15%" y="-25%" width="130%" height="160%" color-interpolation-filters="sRGB">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="5" result="b"/>
+      <feDiffuseLighting in="b" surfaceScale="7" diffuseConstant="1.15" lighting-color="#fff" result="d"><feDistantLight azimuth="240" elevation="62"/></feDiffuseLighting>
+      <feComposite in="SourceGraphic" in2="d" operator="arithmetic" k1="1" result="sh"/>
+      <feSpecularLighting in="b" surfaceScale="7" specularConstant="1.25" specularExponent="26" lighting-color="#fff" result="s"><feDistantLight azimuth="235" elevation="55"/></feSpecularLighting>
+      <feComposite in="s" in2="SourceAlpha" operator="in" result="si"/>
+      <feComposite in="si" in2="sh" operator="arithmetic" k2="1" k3="1" result="lit"/>
+      <feDropShadow dx="0" dy="10" stdDeviation="9" flood-color="#2a0040" flood-opacity=".28"/>
+    </filter>
     <filter id="f-soft" x="-15%" y="-25%" width="130%" height="160%" color-interpolation-filters="sRGB">
       <feGaussianBlur in="SourceAlpha" stdDeviation="6" result="b"/>
       <feDiffuseLighting in="b" surfaceScale="9" diffuseConstant="1.2" lighting-color="#fff" result="d"><feDistantLight azimuth="240" elevation="52"/></feDiffuseLighting>
@@ -366,12 +372,12 @@ footer .links2{display:grid;gap:6px;font-family:var(--font-mono);font-size:14px;
     <nav class="links" aria-label="Разделы">
       <a href="#services">Услуги</a><a href="#course">Курс</a><a href="#packs">Пакеты</a><a href="#schedule">Расписание</a><a href="#faq">Вопросы</a>
     </nav>
-    <span data-m="plush" id="head-m"><a class="btn btn-ink btn-sm" href="#schedule">Записаться</a></span>
+    <span data-m="candy" id="head-m"><a class="btn btn-ink btn-sm" href="#schedule">Записаться</a></span>
   </div>
 </header>
 
 <main class="wrap" id="top">
-  <section class="sec" id="hero" data-sec="hero" data-m="plush" style="padding-top:24px">
+  <section class="sec" id="hero" data-sec="hero" data-m="candy" style="padding-top:24px">
     <div class="hero">
       <div>
         <span class="eyebrow chip">Нейросети для жизни, а не для галочки</span>
@@ -395,7 +401,7 @@ footer .links2{display:grid;gap:6px;font-family:var(--font-mono);font-size:14px;
 <div class="ticker" aria-hidden="true"><div id="ticker"></div></div>
 
 <main class="wrap">
-  <section class="sec" id="services" data-sec="services" data-m="plush">
+  <section class="sec" id="services" data-sec="services" data-m="candy">
     <div class="sec-head">
       <h2><span class="puff" style="--c:var(--sky);font-size:clamp(3rem,8vw,6rem)">задачи</span></h2>
       <p>Что наведём в порядок. Кнопка со стрелкой собирает баннер для ленты, сторис и Telegram.</p>
@@ -404,12 +410,12 @@ footer .links2{display:grid;gap:6px;font-family:var(--font-mono);font-size:14px;
     <div class="grid" id="grid"></div>
   </section>
 
-  <section class="sec" id="course" data-sec="course" data-m="plush">
+  <section class="sec" id="course" data-sec="course" data-m="candy">
     <div class="course">
       <div class="l surf">
         <span class="obj" data-obj="study" aria-hidden="true"></span>
         <span class="tag" style="align-self:flex-start">Курс · 3 встречи</span>
-        <h2><span class="puff" style="--c:#FFE3F0">ИИ для родителей</span></h2>
+        <h2><span class="puff" style="--c:#FFFFFF">ИИ для родителей</span></h2>
         <p style="font-size:18px;max-width:40ch">Как нейросети помогают ребёнку учиться, а семье — жить спокойнее. Без программирования и без страшилок.</p>
         <div class="tiers">
           <div class="tier"><b class="mono">2 990 ₽</b><span>Запись + гайд</span></div>
@@ -428,12 +434,12 @@ footer .links2{display:grid;gap:6px;font-family:var(--font-mono);font-size:14px;
     </div>
   </section>
 
-  <section class="sec" id="packs" data-sec="packs" data-m="plush">
+  <section class="sec" id="packs" data-sec="packs" data-m="candy">
     <div class="sec-head"><h2><span class="puff" style="--c:var(--lilac);font-size:clamp(3rem,8vw,6rem)">пакеты</span></h2><p>Несколько задач за один заход дешевле, чем по отдельности.</p></div>
     <div class="packs" id="packs-list"></div>
   </section>
 
-  <section class="sec" id="schedule" data-sec="schedule" data-m="plush">
+  <section class="sec" id="schedule" data-sec="schedule" data-m="candy">
     <div class="sec-head"><h2><span class="puff" style="--c:var(--orange);font-size:clamp(3rem,8vw,6rem)">окна</span></h2><p>Выберите задачу и время. Запись подтверждается оплатой и сразу попадает в календарь.</p></div>
     <div class="sched">
       <div class="panel surf">
@@ -446,7 +452,7 @@ footer .links2{display:grid;gap:6px;font-family:var(--font-mono);font-size:14px;
     </div>
   </section>
 
-  <section class="sec" id="faq" data-sec="faq" data-m="plush">
+  <section class="sec" id="faq" data-sec="faq" data-m="candy">
     <div class="sec-head"><h2><span class="puff" style="--c:var(--blue);font-size:clamp(3rem,8vw,6rem)">вопросы</span></h2></div>
     <div class="faq">
       <div class="surf"><b>Нужно давать пароли?</b><p>Нет. Работаем по демонстрации экрана: вы вводите пароли сами, мы подсказываем и настраиваем.</p></div>
@@ -469,10 +475,10 @@ footer .links2{display:grid;gap:6px;font-family:var(--font-mono);font-size:14px;
 </main>
 
 
-<div class="overlay" id="book" data-m="plush" hidden>
+<div class="overlay" id="book" data-m="candy" hidden>
   <div class="sheet surf" role="dialog" aria-modal="true" aria-labelledby="book-title" id="book-sheet"></div>
 </div>
-<div class="overlay" id="studio" data-m="plush" hidden>
+<div class="overlay" id="studio" data-m="candy" hidden>
   <div class="sheet wide surf" role="dialog" aria-modal="true" aria-labelledby="studio-title">
     <div class="sheet-head"><div><h3 id="studio-title">Баннер</h3><p class="hint" id="studio-sub"></p></div><button class="btn btn-plain close" data-close="studio" aria-label="Закрыть">×</button></div>
     <div class="studio">
@@ -496,7 +502,7 @@ footer .links2{display:grid;gap:6px;font-family:var(--font-mono);font-size:14px;
 <script src="https://cdn.jsdelivr.net/npm/three@0.149.0/build/three.min.js"></script>
 <script>
 const SITE = "ai2life.ru";
-const STYLES = {plush:{n:1,name:"Плюш-подушка",d:"бархат с ворсом, надутая форма, строчка по краю"}};
+const STYLES = {candy:{n:1,name:"Карамель",d:"глянцевый лакированный надутый пластик"}};
 const GROUPS = {
   study:{name:"Учёба",c:"--lime",hex:"#B9EC4A"}, time:{name:"Время",c:"--sky",hex:"#5CC6FF"}, info:{name:"Информация",c:"--pink",hex:"#FF6FAF"},
   money:{name:"Деньги",c:"--orange",hex:"#FF8A3D"}, bots:{name:"Боты",c:"--lilac",hex:"#B29BFF"}, space:{name:"Дом и место",c:"--sun",hex:"#FFD23F"}
@@ -672,7 +678,7 @@ let tt; function toast(m){ const el=$("#toast"); el.textContent=m; el.hidden=fal
 const probe = src => new Promise(res=>{ const i=new Image(); i.onload=()=>res(i.naturalWidth>0?src:null); i.onerror=()=>res(null); i.src=src; });
 (async()=>{
   const gs = Object.keys(GROUPS);
-  const found = await Promise.all(gs.map(g=>probe(`assets/obj-${g}.png`)));
+  const found = await Promise.all(gs.map(g=>probe(`assets/candy/obj-${g}.png`)));
   gs.forEach((g,i)=>{ if(found[i]) ASSETS[g]=found[i]; });
   if(found.some(Boolean)) fillObjs();
   if(found.filter(Boolean).length>=4){ // plush toys replace the generated 3D scene in the hero
@@ -683,9 +689,10 @@ const probe = src => new Promise(res=>{ const i=new Image(); i.onload=()=>res(i.
     Object.entries(spots).forEach(([g,[x,y,w,r]],i)=>{ if(!ASSETS[g]) return; const d=document.createElement("span"); d.className="toy"; d.setAttribute("aria-hidden","true");
       d.style.cssText=`left:${x}%;top:${y}%;width:${w}%;rotate:${r}deg;animation-delay:${-i*1.1}s`; d.innerHTML=`<img src="${ASSETS[g]}" alt="">`; board.appendChild(d); });
   }
-  const tex = await probe("assets/tex-plush.png");
+  if(await probe("assets/candy/plate-sun.webp")) document.documentElement.classList.add("plates");
+  const tex = await probe("assets/candy/tex.png");
   if(tex) document.documentElement.style.setProperty("--plush-tex",`url("${tex}")`);
-  const word = await probe("assets/word-hero.png");
+  const word = await probe("assets/candy/word-hero.png");
   if(word){ const w=$("#hero-word"); w.style.filter="none"; w.classList.add("has-img"); w.innerHTML=`<img src="${word}" alt="порядок" width="1400" height="290">`; }
 })();
 

@@ -175,7 +175,7 @@ nav.links a:hover{background:var(--busy)}
 .trust{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
 .trust span{font-size:13px;font-weight:600;border:1.5px dashed var(--muted);border-radius:999px;padding:5px 11px;color:var(--muted)}
 .board{position:relative;min-height:440px}
-.board canvas.scene{position:absolute;inset:-40px -24px;width:calc(100% + 48px);height:calc(100% + 80px);pointer-events:none;z-index:0}
+.board canvas.scene{position:absolute;left:-40px;top:-50px;width:calc(100% + 80px);height:calc(100% + 100px);pointer-events:none;z-index:0}
 .toy{position:absolute;z-index:2;pointer-events:none;filter:drop-shadow(0 18px 16px rgba(27,21,48,.32));animation:bob 6s ease-in-out infinite}
 .toy img{width:100%;height:auto;display:block}
 .sticker{position:absolute;z-index:1;padding:18px 20px;width:min(74%,290px);animation:float 6s ease-in-out infinite;--t:#1B1530}
@@ -746,16 +746,19 @@ function init3D(){
 
   const board=$("#board"); const cv=renderer.domElement; cv.className="scene"; cv.setAttribute("aria-hidden","true"); board.prepend(cv);
   const S2=new T.Scene(); lights(S2); const cam2=new T.PerspectiveCamera(35,1,.1,60); cam2.position.set(0,0,10);
-  const place = {study:[-2.7,2.3,0,.72],time:[2.8,2.35,-1,.6],info:[3.0,-.3,.6,.58],money:[-2.9,-1,1,.55],bots:[-.5,-2.8,0,.62],space:[2.4,-2.5,.4,.7]};
+  const place = {study:[-.86,.80,0,.62],time:[.86,.82,0,.55],info:[.90,-.02,0,.5],money:[-.88,-.36,0,.5],bots:[-.18,-.86,0,.52],space:[.80,-.80,0,.6]};
+  let halfW=4, halfH=4; const BOB=.18, PAD=1.05;
   let items=[];
   function frame(t){ for(const it of items){ it.m.rotation.y+=.006+it.i*.0008; it.m.rotation.x+=.003; it.m.position.y=it.y+Math.sin(t/1100+it.i)*.18; }
-    cam2.position.x+=(px*1.2-cam2.position.x)*.05; cam2.position.y+=(-py*.8-cam2.position.y)*.05; cam2.lookAt(0,0,0); renderer.render(S2,cam2); }
+    for(const it of items){ it.m.rotation.z=Math.sin(t/2000+it.i)*.08; } S2.position.x+=(px*.25-S2.position.x)*.05; S2.position.y+=(-py*.18-S2.position.y)*.05; renderer.render(S2,cam2); }
   let px=0,py=0;
   window.__hero = st => { for(const it of items){ S2.remove(it.m); it.m.geometry.dispose(); it.m.material.dispose(); }
-    items = Object.entries(place).map(([g,[x,y,z,s]],i)=>{ const m=mesh(st,g); m.position.set(x,y,z); m.scale.setScalar(s); S2.add(m); return {m,y,i}; });
+    items = Object.entries(place).map(([g,[fx,fy,z,s]],i)=>{ const m=mesh(st,g); m.scale.setScalar(s); S2.add(m); return {m,fx,fy,s,i,y:0}; }); layout();
     if(reduced) frame(0); };
   addEventListener("pointermove",e=>{ px=e.clientX/innerWidth-.5; py=e.clientY/innerHeight-.5; },{passive:true});
-  const size=()=>{ const r=cv.getBoundingClientRect(); if(!r.width) return; renderer.setPixelRatio(Math.min(devicePixelRatio||1,2)); renderer.setSize(r.width,r.height,false); cam2.aspect=r.width/r.height; cam2.updateProjectionMatrix(); if(reduced) frame(0); };
+  function layout(){ const a=cam2.aspect||1; halfH=Math.tan(cam2.fov*Math.PI/360)*cam2.position.z; halfW=halfH*a;
+    for(const it of items){ const r=PAD*it.s*1.25+BOB; it.m.position.x=it.fx*Math.max(0,halfW-r-.25); it.y=it.fy*Math.max(0,halfH-r-.25); it.m.position.y=it.y; it.m.position.z=0; } }
+  const size=()=>{ const r=cv.getBoundingClientRect(); if(!r.width) return; renderer.setPixelRatio(Math.min(devicePixelRatio||1,2)); renderer.setSize(r.width,r.height,false); cam2.aspect=r.width/r.height; cam2.updateProjectionMatrix(); layout(); if(reduced) frame(0); };
   size(); addEventListener("resize",size);
   window.__hero(styleOf(board));
   let vis=true;

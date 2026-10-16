@@ -111,7 +111,8 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) [data-m="candy"] :is(.course .r,.pack,.panel,.sheet){--t:#F3EEFF}}
 :root[data-theme="dark"] [data-m="candy"] :is(.course .r,.pack,.panel,.sheet){--t:#F3EEFF}
 [data-m="candy"] .course .l .puff{color:#FFFFFF}
-#hero-word.has-img img{filter:drop-shadow(0 14px 14px rgba(150,40,20,.25))}
+#hero-word.has-img{display:block;padding:.04em 0 .08em;margin-left:-.04em}
+#hero-word.has-img img{display:block;width:min(100%,640px);height:auto;filter:drop-shadow(0 14px 14px rgba(150,40,20,.25))}
 
 /* ---------- generated candy plates (9-slice, active once assets/candy/ exists): corners and seam stay intact, only the middle stretches ---------- */
 .plates [data-m="candy"] .surf{--pw:34px;background:none!important;box-shadow:none!important;border:0 solid transparent;
@@ -693,7 +694,7 @@ const probe = src => new Promise(res=>{ const i=new Image(); i.onload=()=>res(i.
   const tex = await probe("assets/candy/tex.png");
   if(tex) document.documentElement.style.setProperty("--plush-tex",`url("${tex}")`);
   const word = await probe("assets/candy/word-hero.png");
-  if(word){ const w=$("#hero-word"); w.style.filter="none"; w.classList.add("has-img"); w.innerHTML=`<img src="${word}" alt="порядок" width="1400" height="290">`; }
+  if(word){ const w=$("#hero-word"); w.style.filter="none"; w.classList.add("has-img"); w.innerHTML=`<img src="${word}" alt="порядок" width="1400" height="332">`; }
 })();
 
 /* ---------- 3D objects in each material (Three.js) ---------- */

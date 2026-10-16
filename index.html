@@ -108,13 +108,51 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
   background-size:140px 140px,auto;background-blend-mode:soft-light,normal;
   box-shadow:inset 0 3px 6px rgba(255,255,255,.34),inset 0 -6px 10px rgba(40,0,30,.3),0 10px 16px -8px rgba(60,0,40,.5)}
 [data-m="plush"] :is(.btn,.chip,.slot)::after{inset:4px;border:1.5px dashed color-mix(in oklab,var(--c),white 58%);z-index:-1}
-[data-m="plush"] .puff{filter:url(#f-plush)}
+[data-m="plush"] .puff{filter:url(#f-soft)}
 [data-m="plush"] :is(.course .r,.pack:not(.hot),.panel,.sheet){--c:#F1EAFF}
 :root[data-theme="dark"] [data-m="plush"] :is(.course .r,.pack:not(.hot),.panel,.sheet){--c:#3A2F63}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) [data-m="plush"] :is(.course .r,.pack:not(.hot),.panel,.sheet){--c:#3A2F63}}
 .pill{background:var(--plush-tex),linear-gradient(180deg,#4B3F80 0%,#241A47 55%,#160F2C 100%);background-size:120px 120px,auto;background-blend-mode:soft-light,normal}
 #hero-word.has-img{display:block;padding:.06em 0 .1em;margin-left:-.04em}
 #hero-word.has-img img{display:block;width:min(100%,640px);height:auto;filter:drop-shadow(0 14px 14px rgba(120,20,70,.28))}
+
+
+/* ---------- generated plush plates (9-slice): corners and seam stay intact, only the middle stretches ---------- */
+[data-m="plush"] .surf{--pw:34px;background:none!important;box-shadow:none!important;border:0 solid transparent;
+  border-image:var(--plate) 66 fill / var(--pw) stretch;filter:drop-shadow(0 14px 14px rgba(40,10,70,.22))}
+[data-m="plush"] .surf::before,[data-m="plush"] .surf::after{display:none}
+[data-m="plush"] .surf[style*="--lime"],.st2,[data-m="plush"] .faq > div:nth-child(4){--plate:url(assets/plate-lime.webp)}
+[data-m="plush"] .surf[style*="--sky"],.st1,[data-m="plush"] .faq > div:nth-child(1){--plate:url(assets/plate-sky.webp)}
+[data-m="plush"] .surf[style*="--pink"],[data-m="plush"] .course .l{--plate:url(assets/plate-pink.webp)}
+[data-m="plush"] .surf[style*="--orange"]{--plate:url(assets/plate-orange.webp)}
+[data-m="plush"] .surf[style*="--lilac"],[data-m="plush"] .faq > div:nth-child(2){--plate:url(assets/plate-lilac.webp)}
+[data-m="plush"] .surf[style*="--sun"],.st3,[data-m="plush"] .faq > div:nth-child(3){--plate:url(assets/plate-sun.webp)}
+[data-m="plush"] :is(.course .r,.pack,.panel,.sheet){--plate:url(assets/plate-lavender.webp);--pw:40px}
+[data-m="plush"] .pack.hot{--plate:url(assets/plate-violet.webp)}
+[data-m="plush"] :is(.course .r,.pack,.panel,.sheet){--t:#1B1530}
+[data-m="plush"] .pack.hot{--t:#FFFFFF}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) [data-m="plush"] :is(.course .r,.pack,.panel,.sheet){--t:#F3EEFF}}
+:root[data-theme="dark"] [data-m="plush"] :is(.course .r,.pack,.panel,.sheet){--t:#F3EEFF}
+[data-m="plush"] .course .l{--pw:44px}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) [data-m="plush"] :is(.course .r,.pack,.panel,.sheet){--plate:url(assets/plate-violet.webp)}}
+:root[data-theme="dark"] [data-m="plush"] :is(.course .r,.pack,.panel,.sheet){--plate:url(assets/plate-violet.webp)}
+
+[data-m="plush"] :is(.btn,.chip,.pill,.tag){--bh:48px;background:none!important;box-shadow:none!important;border:0 solid transparent;
+  border-image:var(--bimg,url(assets/btn-sun.webp)) 108 132 fill / calc(var(--bh)*.42) calc(var(--bh)*.5) stretch;filter:drop-shadow(0 6px 6px rgba(40,10,70,.22))}
+[data-m="plush"] :is(.btn,.chip,.slot)::before,[data-m="plush"] :is(.btn,.chip,.slot)::after{display:none}
+[data-m="plush"] .btn-sm{--bh:37px}
+[data-m="plush"] .icon-btn{--bh:42px}
+[data-m="plush"] .close{--bh:42px}
+[data-m="plush"] :is(.btn-ink,.chip[aria-pressed="true"]){--bimg:url(assets/btn-violet.webp)}
+[data-m="plush"] :is(.btn-plain,.chip:not([aria-pressed="true"]):not(.eyebrow)){--bimg:url(assets/btn-white.webp)}
+[data-m="plush"] .chip{--bh:37px}
+[data-m="plush"] .pill{--bh:32px;--bimg:url(assets/btn-violet.webp);padding:3px 13px}
+[data-m="plush"] .tag{--bh:26px;--bimg:url(assets/btn-white.webp);padding:4px 12px}
+[data-m="plush"] .tag.soon{--bimg:url(assets/btn-violet.webp)}
+[data-m="plush"] .eyebrow{--bimg:url(assets/plate-lime.webp);border-image-slice:66 fill;border-image-width:14px;padding:8px 16px}
+[data-m="plush"] .slot{background:none;box-shadow:none;border:0 solid transparent;border-image:url(assets/plate-lime.webp) 66 fill / 14px stretch;filter:drop-shadow(0 5px 5px rgba(40,10,70,.2))}
+[data-m="plush"] .slot.mine{border-image-source:url(assets/plate-violet.webp)}
+[data-m="plush"] .slot[disabled]{border-image:none;filter:none}
 
 /* ---------- header ---------- */
 header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;padding-block:12px}
@@ -186,7 +224,6 @@ nav.links a:hover{background:var(--busy)}
 .course .l .puff{font-size:clamp(2.6rem,6vw,4.6rem)}
 .course .l .obj{top:-50px;right:-6px;width:150px;height:150px}
 .course .r{--c:var(--slab);--t:var(--fg);padding:28px;display:grid;gap:18px;align-content:start}
-[data-m="plush"] .course .r{--t:#1B1530}
 .meet{display:grid;grid-template-columns:48px 1fr;gap:14px;align-items:start}
 .meet .n{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-family:var(--font-display);font-weight:1000;font-size:20px;color:#1B1530;
   background:radial-gradient(circle at 32% 26%,#fff 0 12%,rgba(255,255,255,.3) 26%,transparent 42%),radial-gradient(circle at 60% 78%,#C99600,#FFD23F 70%);box-shadow:inset 0 -4px 6px rgba(0,0,0,.2),0 6px 10px -4px rgba(0,0,0,.35)}
@@ -202,7 +239,6 @@ nav.links a:hover{background:var(--busy)}
 .packs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px 22px}
 .pack{--c:var(--slab);--t:var(--fg);padding:24px;display:flex;flex-direction:column;gap:14px}
 .pack.hot{--c:var(--violet);--t:#FFFFFF}
-[data-m="plush"] .pack{--t:#1B1530}
 .pack h3{font-size:24px}
 .pack ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
 .pack li{display:flex;gap:10px;align-items:baseline}
@@ -216,7 +252,6 @@ nav.links a:hover{background:var(--busy)}
 .sched{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:28px;align-items:start}
 @media (max-width:980px){.sched{grid-template-columns:minmax(0,1fr)}}
 .panel{--c:var(--slab);--t:var(--fg);padding:20px;min-width:0}
-[data-m="plush"] .panel{--t:#1B1530}
 .pick{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:16px}
 .pick label{font-weight:700;font-size:14px}
 select,input[type=text]{font:inherit;color:var(--fg);background:var(--bg);border:0;border-radius:14px;padding:11px 13px;min-width:0;max-width:100%;
@@ -252,7 +287,6 @@ footer .links2{display:grid;gap:6px;font-family:var(--font-mono);font-size:14px;
 .overlay{position:fixed;inset:0;z-index:50;background:var(--scrim);display:grid;place-items:center;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
   padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));overflow-y:auto}
 .sheet{--c:var(--slab);--t:var(--fg);width:min(100%,560px);padding:24px;display:grid;gap:16px;animation:pop .22s cubic-bezier(.3,1.6,.5,1)}
-[data-m="plush"] .sheet{--t:#1B1530}
 [data-m="plush"] .sheet{--c:var(--sky)}
 .sheet.wide{width:min(100%,940px)}
 @keyframes pop{from{transform:scale(.92) translateY(10px);opacity:0}}
@@ -309,6 +343,15 @@ footer .links2{display:grid;gap:6px;font-family:var(--font-mono);font-size:14px;
       <feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" result="t2"/>
       <feDisplacementMap in="tex" in2="t2" scale="5" xChannelSelector="R" yChannelSelector="G"/>
       <feDropShadow dx="0" dy="10" stdDeviation="9" flood-color="#3a0028" flood-opacity=".3"/>
+    </filter>
+    <filter id="f-soft" x="-15%" y="-25%" width="130%" height="160%" color-interpolation-filters="sRGB">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="6" result="b"/>
+      <feDiffuseLighting in="b" surfaceScale="9" diffuseConstant="1.2" lighting-color="#fff" result="d"><feDistantLight azimuth="240" elevation="52"/></feDiffuseLighting>
+      <feComposite in="SourceGraphic" in2="d" operator="arithmetic" k1="1" result="sh"/>
+      <feSpecularLighting in="b" surfaceScale="9" specularConstant=".45" specularExponent="10" lighting-color="#fff" result="s"><feDistantLight azimuth="235" elevation="55"/></feSpecularLighting>
+      <feComposite in="s" in2="SourceAlpha" operator="in" result="si"/>
+      <feComposite in="si" in2="sh" operator="arithmetic" k2="1" k3="1" result="lit"/>
+      <feDropShadow dx="0" dy="10" stdDeviation="9" flood-color="#3a0028" flood-opacity=".25"/>
     </filter>
     <filter id="f-fuzz" x="-5%" y="-5%" width="110%" height="110%">
       <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" result="t"/>

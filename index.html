@@ -183,6 +183,9 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
 .plates [data-m="candy"] .surf:hover{animation:none}
 .btns [data-m="candy"] :is(.btn,.chip,.pill,.tag){backface-visibility:hidden}
 
+[data-word].has-img{display:block;padding:0;font-size:inherit}
+[data-word].has-img img{display:block;height:clamp(56px,9vw,104px);width:auto;max-width:100%;filter:drop-shadow(0 12px 12px rgba(60,20,90,.22))}
+.course .l [data-word].has-img img{height:auto;width:min(100%,460px)}
 /* ---------- header ---------- */
 header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;padding-block:12px}
 .bar{display:flex;align-items:center;gap:12px;border-radius:999px;padding:8px 8px 8px 18px;
@@ -435,7 +438,7 @@ footer .links2{display:grid;gap:6px;font-family:var(--font-mono);font-size:14px;
 <main class="wrap">
   <section class="sec" id="services" data-sec="services" data-m="candy">
     <div class="sec-head">
-      <h2><span class="puff" style="--c:var(--sky);font-size:clamp(3rem,8vw,6rem)">задачи</span></h2>
+      <h2><span class="puff" data-word="tasks" style="--c:var(--sky);font-size:clamp(3rem,8vw,6rem)">задачи</span></h2>
       <p>Что наведём в порядок. Кнопка со стрелкой собирает баннер для ленты, сторис и Telegram.</p>
     </div>
     <div class="chips" id="chips" role="group" aria-label="Фильтр услуг"></div>
@@ -447,7 +450,7 @@ footer .links2{display:grid;gap:6px;font-family:var(--font-mono);font-size:14px;
       <div class="l surf">
         <span class="obj" data-obj="study" aria-hidden="true"></span>
         <span class="tag" style="align-self:flex-start">Курс · 3 встречи</span>
-        <h2><span class="puff" style="--c:#FFFFFF">ИИ для родителей</span></h2>
+        <h2><span class="puff" data-word="parents" style="--c:#FFFFFF">ИИ для родителей</span></h2>
         <p style="font-size:18px;max-width:40ch">Как нейросети помогают ребёнку учиться, а семье — жить спокойнее. Без программирования и без страшилок.</p>
         <div class="tiers">
           <div class="tier"><b class="mono">2 990 ₽</b><span>Запись + гайд</span></div>
@@ -467,12 +470,12 @@ footer .links2{display:grid;gap:6px;font-family:var(--font-mono);font-size:14px;
   </section>
 
   <section class="sec" id="packs" data-sec="packs" data-m="candy">
-    <div class="sec-head"><h2><span class="puff" style="--c:var(--lilac);font-size:clamp(3rem,8vw,6rem)">пакеты</span></h2><p>Несколько задач за один заход дешевле, чем по отдельности.</p></div>
+    <div class="sec-head"><h2><span class="puff" data-word="packs" style="--c:var(--lilac);font-size:clamp(3rem,8vw,6rem)">пакеты</span></h2><p>Несколько задач за один заход дешевле, чем по отдельности.</p></div>
     <div class="packs" id="packs-list"></div>
   </section>
 
   <section class="sec" id="schedule" data-sec="schedule" data-m="candy">
-    <div class="sec-head"><h2><span class="puff" style="--c:var(--orange);font-size:clamp(3rem,8vw,6rem)">окна</span></h2><p>Выберите задачу и время. Запись подтверждается оплатой и сразу попадает в календарь.</p></div>
+    <div class="sec-head"><h2><span class="puff" data-word="slots" style="--c:var(--orange);font-size:clamp(3rem,8vw,6rem)">окна</span></h2><p>Выберите задачу и время. Запись подтверждается оплатой и сразу попадает в календарь.</p></div>
     <div class="sched">
       <div class="panel surf">
         <div class="pick"><label for="svc">Задача</label><select id="svc"></select></div>
@@ -485,7 +488,7 @@ footer .links2{display:grid;gap:6px;font-family:var(--font-mono);font-size:14px;
   </section>
 
   <section class="sec" id="faq" data-sec="faq" data-m="candy">
-    <div class="sec-head"><h2><span class="puff" style="--c:var(--blue);font-size:clamp(3rem,8vw,6rem)">вопросы</span></h2></div>
+    <div class="sec-head"><h2><span class="puff" data-word="faq" style="--c:var(--blue);font-size:clamp(3rem,8vw,6rem)">вопросы</span></h2></div>
     <div class="faq">
       <div class="surf"><b>Нужно давать пароли?</b><p>Нет. Работаем по демонстрации экрана: вы вводите пароли сами, мы подсказываем и настраиваем.</p></div>
       <div class="surf"><b>Как проходит встреча?</b><p>Видеозвонок на 1–2 часа. После встречи присылаем короткую инструкцию, что и где настроено.</p></div>
@@ -725,6 +728,8 @@ const probe = src => new Promise(res=>{ const i=new Image(); i.onload=()=>res(i.
   if(await probe("assets/candy/plate-sun.webp")) document.documentElement.classList.add("plates");
   const tex = await probe("assets/candy/tex.png");
   if(tex) document.documentElement.style.setProperty("--plush-tex",`url("${tex}")`);
+  for(const el of document.querySelectorAll("[data-word]")){ const src=await probe(`assets/candy/word-${el.dataset.word}.png`);
+    if(src){ const alt=el.textContent.trim(); el.style.filter="none"; el.classList.add("has-img"); el.innerHTML=`<img src="${src}" alt="${alt}">`; } }
   const word = await probe("assets/candy/word-hero.png");
   if(word){ const w=$("#hero-word"); w.style.filter="none"; w.classList.add("has-img"); w.innerHTML=`<img src="${word}" alt="порядок" width="1400" height="332">`; }
 })();

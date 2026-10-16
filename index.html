@@ -113,7 +113,8 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
 :root[data-theme="dark"] [data-m="plush"] :is(.course .r,.pack:not(.hot),.panel,.sheet){--c:#3A2F63}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) [data-m="plush"] :is(.course .r,.pack:not(.hot),.panel,.sheet){--c:#3A2F63}}
 .pill{background:var(--plush-tex),linear-gradient(180deg,#4B3F80 0%,#241A47 55%,#160F2C 100%);background-size:120px 120px,auto;background-blend-mode:soft-light,normal}
-.puff img{display:block;height:1.05em;width:auto;max-width:100%}
+#hero-word.has-img{display:block;padding:.06em 0 .1em;margin-left:-.04em}
+#hero-word.has-img img{display:block;width:min(100%,640px);height:auto;filter:drop-shadow(0 14px 14px rgba(120,20,70,.28))}
 
 /* ---------- header ---------- */
 header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;padding-block:12px}
@@ -642,7 +643,7 @@ const probe = src => new Promise(res=>{ const i=new Image(); i.onload=()=>res(i.
   const tex = await probe("assets/tex-plush.png");
   if(tex) document.documentElement.style.setProperty("--plush-tex",`url("${tex}")`);
   const word = await probe("assets/word-hero.png");
-  if(word){ const w=$("#hero-word"); w.style.filter="none"; w.innerHTML=`<img src="${word}" alt="порядок">`; }
+  if(word){ const w=$("#hero-word"); w.style.filter="none"; w.classList.add("has-img"); w.innerHTML=`<img src="${word}" alt="порядок" width="1400" height="290">`; }
 })();
 
 /* ---------- 3D objects in each material (Three.js) ---------- */

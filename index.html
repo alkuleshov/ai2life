@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@800;900;1000&family=Onest:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
 <style>
-/* Layout: material lab — every section is rendered in its own inflated material (candy, glass, plush, holo, gummy, pillow) so styles can be compared side by side; a dock applies one material to the whole site */
+/* Layout: plush-pillow world — every surface is velvet fabric inflated like a cushion with a stitched seam; colour blobs float behind */
 :root{
   --bg:#F5F2FB; --fg:#1B1530; --muted:#5B5378; --slab:#FFFFFF; --ink:#1B1530;
   --lime:#B9EC4A; --sky:#5CC6FF; --pink:#FF6FAF; --orange:#FF8A3D; --lilac:#B29BFF; --sun:#FFD23F; --violet:#6A3DF0; --blue:#2F6BFF;
@@ -41,7 +41,7 @@
 html{overflow-x:clip}
 [hidden]{display:none!important}
 body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:16px;line-height:1.5;
-  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-bottom:96px;overflow-x:hidden}
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));overflow-x:hidden}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
 .wrap{max-width:1180px;margin:0 auto}
 h1,h2,h3{font-family:var(--font-display);text-wrap:balance;margin:0;line-height:1.05;font-weight:900;letter-spacing:-.01em}
@@ -58,13 +58,6 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
 .sec-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px;margin-bottom:30px}
 .sec-head h2{font-size:clamp(1.8rem,3.6vw,2.6rem)}
 .sec-head p{color:var(--muted);max-width:46ch}
-
-/* style label at the top of each block */
-.stylelabel{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:22px;font-size:13px}
-.stylelabel .n{font-family:var(--font-mono);font-weight:600;background:var(--fg);color:var(--bg);border-radius:999px;padding:3px 10px}
-.stylelabel b{font-size:15px}
-.stylelabel span{color:var(--muted)}
-.stylelabel .apply{font-weight:700;font-size:13px;color:var(--violet);text-decoration:underline;text-underline-offset:3px;padding:4px 2px}
 
 /* ======================================================================
    MATERIAL SYSTEM — shared parts: .surf (cards, panels), .btn, .chip, .slot, .puff (inflated words)
@@ -101,88 +94,26 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
 .tag{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#1B1530;background:rgba(255,255,255,.7);border-radius:999px;padding:4px 11px;box-shadow:inset 0 1px 1px #fff,0 1px 2px rgba(0,0,0,.12)}
 .tag.soon{background:#1B1530;color:#fff}
 
-/* ---------- 1. CANDY — glossy lacquered plastic, inflated ---------- */
-[data-m="candy"] .surf{
-  background:radial-gradient(120% 70% at 30% 0%,color-mix(in oklab,var(--c),white 55%) 0%,transparent 55%),linear-gradient(180deg,color-mix(in oklab,var(--c),white 15%),var(--c) 45%,var(--lo));
-  box-shadow:inset 0 8px 14px rgba(255,255,255,.55),inset 0 -14px 24px color-mix(in oklab,var(--c),#2a0030 38%),inset 0 0 0 1px rgba(255,255,255,.35),0 22px 34px -14px color-mix(in oklab,var(--c),#2a0040 60%)}
-[data-m="candy"] .surf::before{top:10px;left:22px;width:42%;height:20px;border-radius:999px;background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(255,255,255,0));filter:blur(.5px)}
-[data-m="candy"] .surf::after{top:14px;right:26px;width:12px;height:12px;background:rgba(255,255,255,.85);box-shadow:-14px 6px 0 -3px rgba(255,255,255,.6)}
-[data-m="candy"] :is(.btn,.chip,.slot){
-  background:radial-gradient(120% 90% at 50% 0%,color-mix(in oklab,var(--c),white 50%) 0%,transparent 60%),linear-gradient(180deg,var(--c),var(--lo));
-  box-shadow:inset 0 3px 4px rgba(255,255,255,.6),inset 0 -5px 8px color-mix(in oklab,var(--c),#200028 35%),0 10px 16px -8px color-mix(in oklab,var(--c),#200040 60%)}
-[data-m="candy"] :is(.btn,.chip,.slot)::before{inset:3px 14% auto 14%;height:38%;background:linear-gradient(180deg,rgba(255,255,255,.85),rgba(255,255,255,0));z-index:-1}
-[data-m="candy"] .puff{filter:url(#f-candy)}
-
-/* ---------- 2. GLASS — inflatable clear glass with a tinted rim ---------- */
-[data-m="glass"] .surf{
-  background:linear-gradient(160deg,color-mix(in srgb,var(--c) 34%,rgba(255,255,255,.55)) 0%,color-mix(in srgb,var(--c) 18%,rgba(255,255,255,.18)) 55%,color-mix(in srgb,var(--c) 40%,transparent) 100%);
-  -webkit-backdrop-filter:blur(18px) saturate(180%);backdrop-filter:blur(18px) saturate(180%);
-  box-shadow:inset 0 2px 1px rgba(255,255,255,.95),inset 0 -2px 1px rgba(255,255,255,.4),inset 0 0 0 1.5px color-mix(in srgb,var(--c) 55%,rgba(255,255,255,.6)),
-    inset 0 -26px 40px -14px color-mix(in srgb,var(--c) 50%,transparent),inset 0 22px 30px -20px rgba(255,255,255,.8),0 24px 44px -20px color-mix(in srgb,var(--c) 70%,rgba(40,16,96,.5))}
-[data-m="glass"] .surf::before{top:8px;left:16px;right:40%;height:14px;border-radius:999px;background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(255,255,255,0))}
-[data-m="glass"] .surf::after{right:12px;top:16%;bottom:16%;width:6px;border-radius:999px;background:linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,.8),rgba(255,255,255,0))}
-[data-m="glass"] :is(.btn,.chip,.slot){
-  background:linear-gradient(180deg,color-mix(in srgb,var(--c) 55%,rgba(255,255,255,.6)),color-mix(in srgb,var(--c) 70%,transparent));
-  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
-  box-shadow:inset 0 1.5px 1px rgba(255,255,255,.95),inset 0 0 0 1.5px color-mix(in srgb,var(--c) 60%,rgba(255,255,255,.7)),inset 0 -8px 12px -6px color-mix(in srgb,var(--c) 80%,transparent),0 10px 18px -10px color-mix(in srgb,var(--c) 80%,rgba(30,10,80,.5))}
-[data-m="glass"] .puff{filter:url(#f-glass);color:color-mix(in srgb,var(--c) 62%,rgba(255,255,255,.35));-webkit-text-stroke:2px color-mix(in oklab,var(--c),#0B2A6A 30%)}
-
-/* ---------- 3. PLUSH — velvet fabric, matte, fuzzy edges ---------- */
-[data-m="velvet"] .surf{background:none;box-shadow:none}
-[data-m="velvet"] .surf::before{inset:0;z-index:-1;filter:url(#f-fuzz);
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.3' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1.4 0 0 0 -.55'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
-    radial-gradient(75% 65% at 45% 35%,color-mix(in oklab,var(--c),white 20%) 0%,var(--c) 55%,color-mix(in oklab,var(--c),#2a0020 38%) 100%);
-  background-blend-mode:soft-light,normal;
-  box-shadow:inset 0 14px 26px rgba(255,255,255,.28),inset 0 -20px 34px rgba(40,0,30,.38),0 18px 28px -14px rgba(60,0,40,.45)}
-[data-m="velvet"] :is(.btn,.chip,.slot){
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1.4 0 0 0 -.55'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
-    radial-gradient(90% 90% at 50% 30%,color-mix(in oklab,var(--c),white 18%),var(--c) 60%,var(--lo));
-  background-blend-mode:soft-light,normal;
-  box-shadow:inset 0 3px 6px rgba(255,255,255,.3),inset 0 -6px 10px rgba(40,0,30,.32),0 8px 14px -8px rgba(60,0,40,.5)}
-[data-m="velvet"] .puff{filter:url(#f-velvet)}
-[data-m="velvet"] :is(.course .r,.pack,.panel,.sheet){--c:#EFE7FF}
-:root[data-theme="dark"] [data-m="velvet"] :is(.course .r,.pack,.panel,.sheet){--c:#3A2F63}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) [data-m="velvet"] :is(.course .r,.pack,.panel,.sheet){--c:#3A2F63}}
-
-/* ---------- 4. HOLO — iridescent chrome ---------- */
-[data-m="holo"] .surf{--t:#1B1530;
-  background:linear-gradient(115deg,rgba(255,255,255,0) 30%,rgba(255,255,255,.7) 42%,rgba(255,255,255,0) 54%),
-    conic-gradient(from 210deg at 30% 40%,#FFB0E2,#AEEFFF,#D4BFFF,#FFEFAA,#B6FFD6,#FFB0E2);
-  background-size:260% 100%,100% 100%;animation:sheen 7s linear infinite;
-  box-shadow:inset 0 2px 2px rgba(255,255,255,.95),inset 0 -12px 22px rgba(60,40,120,.3),inset 0 0 0 1.5px rgba(255,255,255,.65),0 22px 36px -16px rgba(70,40,140,.55)}
-[data-m="holo"] .surf::after{inset:0;background:var(--c);mix-blend-mode:color;opacity:.28}
-[data-m="holo"] :is(.btn,.chip,.slot){
-  background:linear-gradient(115deg,rgba(255,255,255,0) 30%,rgba(255,255,255,.75) 45%,rgba(255,255,255,0) 60%),linear-gradient(100deg,#FFB0E2,#AEEFFF 35%,#D4BFFF 65%,#FFEFAA);
-  background-size:260% 100%,100% 100%;animation:sheen 5s linear infinite;
-  box-shadow:inset 0 2px 2px rgba(255,255,255,.95),inset 0 -5px 8px rgba(60,40,120,.3),0 10px 18px -8px rgba(70,40,140,.55)}
-[data-m="holo"] :is(.btn-ink,.chip[aria-pressed="true"],.slot.mine){background:linear-gradient(115deg,rgba(255,255,255,0) 30%,rgba(255,255,255,.35) 45%,rgba(255,255,255,0) 60%),linear-gradient(100deg,#2A1E5C,#4B2E8F 40%,#1E3D7A 70%,#3A1E5C);background-size:260% 100%,100% 100%}
-[data-m="holo"] .puff{filter:url(#f-holo);color:transparent;-webkit-background-clip:text;background-clip:text;
-  background-image:linear-gradient(100deg,#FF7FCB,#7FE3FF 30%,#B79BFF 55%,#FFE07A 80%,#FF7FCB)}
-@keyframes sheen{from{background-position:120% 0,0 0}to{background-position:-60% 0,0 0}}
-
-/* ---------- 5. GUMMY — translucent sugar-coated jelly ---------- */
-[data-m="jelly"] .surf{
-  background:radial-gradient(rgba(255,255,255,.6) 1px,transparent 1.8px) 0 0/10px 10px,radial-gradient(rgba(255,255,255,.4) 1px,transparent 1.8px) 5px 6px/13px 13px,
-    radial-gradient(80% 70% at 50% 38%,color-mix(in oklab,var(--c),white 32%) 0%,color-mix(in srgb,var(--c) 92%,transparent) 58%,color-mix(in oklab,var(--c),#400030 25%) 100%);
-  box-shadow:inset 0 0 0 2px color-mix(in srgb,var(--c) 60%,white),inset 0 10px 18px rgba(255,255,255,.55),inset 0 -18px 28px color-mix(in oklab,var(--c),#300020 38%),inset 0 0 46px color-mix(in srgb,var(--c) 55%,white),0 18px 28px -12px color-mix(in oklab,var(--c),#300030 55%)}
-[data-m="jelly"] .surf::before{top:12px;left:20px;width:28%;height:16px;border-radius:999px;background:rgba(255,255,255,.75);filter:blur(1px)}
-[data-m="jelly"] .surf:hover{animation:squish .5s ease}
-[data-m="jelly"] :is(.btn,.chip,.slot){
-  background:radial-gradient(rgba(255,255,255,.55) 1px,transparent 1.6px) 0 0/8px 8px,radial-gradient(90% 80% at 50% 35%,color-mix(in oklab,var(--c),white 30%),var(--c) 60%,var(--lo));
-  box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--c) 55%,white),inset 0 3px 5px rgba(255,255,255,.6),inset 0 -6px 9px color-mix(in oklab,var(--c),#300020 35%),0 10px 16px -8px color-mix(in oklab,var(--c),#300030 55%)}
-[data-m="jelly"] .puff{filter:url(#f-jelly)}
-@keyframes squish{30%{transform:scale(1.03,.96)}60%{transform:scale(.98,1.02)}}
-
-/* ---------- 6. PILLOW — inflatable vinyl with stitching ---------- */
-[data-m="pillow"] .surf{border-radius:26px;
-  background:radial-gradient(90% 80% at 50% 42%,color-mix(in oklab,var(--c),white 22%) 0%,var(--c) 62%,color-mix(in oklab,var(--c),#1a0a3a 30%) 100%);
-  box-shadow:inset 0 10px 16px rgba(255,255,255,.42),inset 0 -14px 22px rgba(0,0,0,.24),inset 16px 0 22px -14px rgba(0,0,0,.16),inset -16px 0 22px -14px rgba(0,0,0,.16),0 18px 30px -14px rgba(20,10,60,.5)}
-[data-m="pillow"] .surf::before{inset:9px;border-radius:19px;border:2px dashed color-mix(in oklab,var(--c),white 60%);box-shadow:0 1px 0 rgba(0,0,0,.12),inset 0 1px 0 rgba(0,0,0,.12)}
-[data-m="pillow"] :is(.btn,.chip,.slot){
-  background:radial-gradient(100% 90% at 50% 40%,color-mix(in oklab,var(--c),white 22%),var(--c) 65%,var(--lo));
-  box-shadow:inset 0 3px 5px rgba(255,255,255,.45),inset 0 -5px 8px rgba(0,0,0,.2),0 8px 14px -8px rgba(20,10,60,.5)}
-[data-m="pillow"] :is(.btn,.chip,.slot)::after{inset:4px;border:1.5px dashed color-mix(in oklab,var(--c),white 55%);z-index:-1}
-[data-m="pillow"] .puff{filter:url(#f-pillow)}
+/* ---------- PLUSH PILLOW — velvet fabric as the base, inflated pillow volume and a stitched seam ---------- */
+:root{--plush-tex:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.3' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1.4 0 0 0 -.55'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+[data-m="plush"] .surf{background:none;box-shadow:none;border-radius:34px}
+[data-m="plush"] .surf::before{inset:0;z-index:-1;filter:url(#f-fuzz);
+  background:var(--plush-tex),radial-gradient(85% 75% at 48% 40%,color-mix(in oklab,var(--c),white 26%) 0%,var(--c) 58%,color-mix(in oklab,var(--c),#2a0024 34%) 100%);
+  background-size:220px 220px,auto;background-blend-mode:soft-light,normal;
+  box-shadow:inset 0 14px 24px rgba(255,255,255,.32),inset 0 -22px 34px rgba(40,0,30,.34),inset 18px 0 26px -16px rgba(40,0,30,.18),inset -18px 0 26px -16px rgba(40,0,30,.18),0 22px 34px -16px rgba(60,0,40,.42)}
+[data-m="plush"] .surf::after{inset:11px;border-radius:24px;z-index:0;border:2.5px dashed color-mix(in oklab,var(--c),white 62%);
+  box-shadow:0 1.5px 0 rgba(40,0,30,.16),inset 0 1.5px 0 rgba(40,0,30,.16)}
+[data-m="plush"] :is(.btn,.chip,.slot){
+  background:var(--plush-tex),radial-gradient(100% 90% at 50% 35%,color-mix(in oklab,var(--c),white 22%),var(--c) 62%,var(--lo));
+  background-size:140px 140px,auto;background-blend-mode:soft-light,normal;
+  box-shadow:inset 0 3px 6px rgba(255,255,255,.34),inset 0 -6px 10px rgba(40,0,30,.3),0 10px 16px -8px rgba(60,0,40,.5)}
+[data-m="plush"] :is(.btn,.chip,.slot)::after{inset:4px;border:1.5px dashed color-mix(in oklab,var(--c),white 58%);z-index:-1}
+[data-m="plush"] .puff{filter:url(#f-plush)}
+[data-m="plush"] :is(.course .r,.pack:not(.hot),.panel,.sheet){--c:#F1EAFF}
+:root[data-theme="dark"] [data-m="plush"] :is(.course .r,.pack:not(.hot),.panel,.sheet){--c:#3A2F63}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) [data-m="plush"] :is(.course .r,.pack:not(.hot),.panel,.sheet){--c:#3A2F63}}
+.pill{background:var(--plush-tex),linear-gradient(180deg,#4B3F80 0%,#241A47 55%,#160F2C 100%);background-size:120px 120px,auto;background-blend-mode:soft-light,normal}
+.puff img{display:block;height:1.05em;width:auto;max-width:100%}
 
 /* ---------- header ---------- */
 header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;padding-block:12px}
@@ -252,7 +183,7 @@ nav.links a:hover{background:var(--busy)}
 .course .l .puff{font-size:clamp(2.6rem,6vw,4.6rem)}
 .course .l .obj{top:-50px;right:-6px;width:150px;height:150px}
 .course .r{--c:var(--slab);--t:var(--fg);padding:28px;display:grid;gap:18px;align-content:start}
-[data-m="holo"] .course .r{--t:#1B1530}
+[data-m="plush"] .course .r{--t:#1B1530}
 .meet{display:grid;grid-template-columns:48px 1fr;gap:14px;align-items:start}
 .meet .n{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-family:var(--font-display);font-weight:1000;font-size:20px;color:#1B1530;
   background:radial-gradient(circle at 32% 26%,#fff 0 12%,rgba(255,255,255,.3) 26%,transparent 42%),radial-gradient(circle at 60% 78%,#C99600,#FFD23F 70%);box-shadow:inset 0 -4px 6px rgba(0,0,0,.2),0 6px 10px -4px rgba(0,0,0,.35)}
@@ -268,7 +199,7 @@ nav.links a:hover{background:var(--busy)}
 .packs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px 22px}
 .pack{--c:var(--slab);--t:var(--fg);padding:24px;display:flex;flex-direction:column;gap:14px}
 .pack.hot{--c:var(--violet);--t:#FFFFFF}
-[data-m="holo"] .pack{--t:#1B1530}
+[data-m="plush"] .pack{--t:#1B1530}
 .pack h3{font-size:24px}
 .pack ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
 .pack li{display:flex;gap:10px;align-items:baseline}
@@ -282,7 +213,7 @@ nav.links a:hover{background:var(--busy)}
 .sched{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:28px;align-items:start}
 @media (max-width:980px){.sched{grid-template-columns:minmax(0,1fr)}}
 .panel{--c:var(--slab);--t:var(--fg);padding:20px;min-width:0}
-[data-m="holo"] .panel{--t:#1B1530}
+[data-m="plush"] .panel{--t:#1B1530}
 .pick{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:16px}
 .pick label{font-weight:700;font-size:14px}
 select,input[type=text]{font:inherit;color:var(--fg);background:var(--bg);border:0;border-radius:14px;padding:11px 13px;min-width:0;max-width:100%;
@@ -314,22 +245,12 @@ footer p{color:var(--muted);max-width:60ch}
 footer .links2{display:grid;gap:6px;font-family:var(--font-mono);font-size:14px;align-content:start}
 @media (max-width:700px){footer{grid-template-columns:1fr}}
 
-/* ---------- style dock ---------- */
-.dock{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;justify-content:center;
-  padding:0 max(12px,env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px));pointer-events:none}
-.dock-in{pointer-events:auto;display:flex;align-items:center;gap:6px;max-width:100%;overflow-x:auto;padding:7px;border-radius:999px;
-  background:rgba(27,21,48,.9);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 14px 34px -10px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.15)}
-.dock-in > span{color:#fff;font-weight:700;font-size:13px;padding:0 6px 0 10px;white-space:nowrap}
-.dock button{flex:none;color:#fff;font-weight:700;font-size:13px;padding:8px 13px;border-radius:999px;display:flex;align-items:center;gap:7px;white-space:nowrap}
-.dock button i{width:14px;height:14px;border-radius:50%;display:inline-block;background:var(--sw);box-shadow:inset 0 -2px 3px rgba(0,0,0,.3),inset 0 1px 2px rgba(255,255,255,.6)}
-.dock button[aria-pressed="true"]{background:#fff;color:#1B1530}
-
 /* ---------- overlays ---------- */
 .overlay{position:fixed;inset:0;z-index:50;background:var(--scrim);display:grid;place-items:center;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
   padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));overflow-y:auto}
 .sheet{--c:var(--slab);--t:var(--fg);width:min(100%,560px);padding:24px;display:grid;gap:16px;animation:pop .22s cubic-bezier(.3,1.6,.5,1)}
-[data-m="holo"] .sheet{--t:#1B1530}
-[data-m="glass"] .sheet{--c:var(--sky)}
+[data-m="plush"] .sheet{--t:#1B1530}
+[data-m="plush"] .sheet{--c:var(--sky)}
 .sheet.wide{width:min(100%,940px)}
 @keyframes pop{from{transform:scale(.92) translateY(10px);opacity:0}}
 .sheet-head{display:flex;justify-content:space-between;gap:12px;align-items:start}
@@ -357,7 +278,7 @@ footer .links2{display:grid;gap:6px;font-family:var(--font-mono);font-size:14px;
 .fmt button[aria-pressed="true"]{background:linear-gradient(180deg,#FFF2B0,#FFD23F);color:#1B1530;box-shadow:inset 0 2px 3px rgba(255,255,255,.7),0 6px 10px -6px rgba(0,0,0,.4)}
 .actions{display:grid;gap:12px;margin-top:14px}
 .hint{font-size:13px;opacity:.8}
-.toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));translate:-50% 0;z-index:70;color:#fff;border-radius:999px;padding:12px 20px;font-weight:700;max-width:calc(100% - 32px);
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));translate:-50% 0;z-index:70;color:#fff;border-radius:999px;padding:12px 20px;font-weight:700;max-width:calc(100% - 32px);
   background:linear-gradient(180deg,#4B3F80,#1B1530);box-shadow:inset 0 1px 1px rgba(255,255,255,.35),0 10px 24px -8px rgba(0,0,0,.5)}
 #confetti{position:fixed;inset:0;pointer-events:none;z-index:80;width:100%;height:100%}
 .fx{position:absolute;width:0;height:0;overflow:hidden}
@@ -371,69 +292,20 @@ footer .links2{display:grid;gap:6px;font-family:var(--font-mono);font-size:14px;
 <!-- SVG lighting filters: blur the glyph alpha into a height map, then light it — flat text becomes an inflated material -->
 <svg class="fx" aria-hidden="true" focusable="false">
   <defs>
-    <filter id="f-candy" x="-15%" y="-25%" width="130%" height="160%" color-interpolation-filters="sRGB">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="5" result="b"/>
-      <feDiffuseLighting in="b" surfaceScale="7" diffuseConstant="1.15" lighting-color="#fff" result="d"><feDistantLight azimuth="240" elevation="62"/></feDiffuseLighting>
+    <filter id="f-plush" x="-15%" y="-25%" width="130%" height="160%" color-interpolation-filters="sRGB">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="7" result="b"/>
+      <feDiffuseLighting in="b" surfaceScale="11" diffuseConstant="1.25" lighting-color="#fff" result="d"><feDistantLight azimuth="240" elevation="50"/></feDiffuseLighting>
       <feComposite in="SourceGraphic" in2="d" operator="arithmetic" k1="1" result="sh"/>
-      <feSpecularLighting in="b" surfaceScale="7" specularConstant="1.25" specularExponent="26" lighting-color="#fff" result="s"><feDistantLight azimuth="235" elevation="55"/></feSpecularLighting>
+      <feSpecularLighting in="b" surfaceScale="11" specularConstant=".35" specularExponent="8" lighting-color="#fff" result="s"><feDistantLight azimuth="235" elevation="52"/></feSpecularLighting>
       <feComposite in="s" in2="SourceAlpha" operator="in" result="si"/>
       <feComposite in="si" in2="sh" operator="arithmetic" k2="1" k3="1" result="lit"/>
-      <feDropShadow dx="0" dy="10" stdDeviation="9" flood-color="#2a0040" flood-opacity=".28"/>
-    </filter>
-    <filter id="f-glass" x="-15%" y="-25%" width="130%" height="160%" color-interpolation-filters="sRGB">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="5" result="b"/>
-      <feMorphology in="SourceAlpha" operator="erode" radius="4" result="er"/>
-      <feGaussianBlur in="er" stdDeviation="3" result="erb"/>
-      <feComposite in="SourceAlpha" in2="erb" operator="out" result="rim"/>
-      <feFlood flood-color="#ffffff" flood-opacity=".55" result="w"/><feComposite in="w" in2="rim" operator="in" result="rimw"/>
-      <feSpecularLighting in="b" surfaceScale="8" specularConstant="1.7" specularExponent="38" lighting-color="#fff" result="s"><feDistantLight azimuth="235" elevation="52"/></feSpecularLighting>
-      <feComposite in="s" in2="SourceAlpha" operator="in" result="si"/>
-      <feMerge result="lit"><feMergeNode in="SourceGraphic"/><feMergeNode in="rimw"/><feMergeNode in="si"/></feMerge>
-      <feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="#1a2a6a" flood-opacity=".22"/>
-    </filter>
-    <filter id="f-velvet" x="-15%" y="-25%" width="130%" height="160%" color-interpolation-filters="sRGB">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="6" result="b"/>
-      <feDiffuseLighting in="b" surfaceScale="9" diffuseConstant="1.2" lighting-color="#fff" result="d"><feDistantLight azimuth="240" elevation="55"/></feDiffuseLighting>
-      <feComposite in="SourceGraphic" in2="d" operator="arithmetic" k1="1" result="sh"/>
       <feTurbulence type="fractalNoise" baseFrequency="1.4" numOctaves="2" result="n"/>
       <feColorMatrix in="n" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  1.1 0 0 0 -.45" result="nw"/>
-      <feComposite in="nw" in2="sh" operator="in" result="fib"/>
-      <feBlend in="fib" in2="sh" mode="soft-light" result="tex"/>
-      <feTurbulence type="fractalNoise" baseFrequency=".75" numOctaves="2" result="t2"/>
-      <feDisplacementMap in="tex" in2="t2" scale="7" xChannelSelector="R" yChannelSelector="G" result="fz"/>
-      <feDropShadow dx="0" dy="9" stdDeviation="8" flood-color="#3a0028" flood-opacity=".3"/>
-    </filter>
-    <filter id="f-holo" x="-15%" y="-25%" width="130%" height="160%" color-interpolation-filters="sRGB">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="5" result="b"/>
-      <feDiffuseLighting in="b" surfaceScale="8" diffuseConstant="1.25" lighting-color="#fff" result="d"><feDistantLight azimuth="240" elevation="58"/></feDiffuseLighting>
-      <feComposite in="SourceGraphic" in2="d" operator="arithmetic" k1="1" result="sh"/>
-      <feSpecularLighting in="b" surfaceScale="8" specularConstant="1.6" specularExponent="18" lighting-color="#fff" result="s"><feDistantLight azimuth="225" elevation="48"/></feSpecularLighting>
-      <feComposite in="s" in2="SourceAlpha" operator="in" result="si"/>
-      <feComposite in="si" in2="sh" operator="arithmetic" k2="1" k3="1" result="lit"/>
-      <feDropShadow dx="0" dy="10" stdDeviation="9" flood-color="#3a2a80" flood-opacity=".3"/>
-    </filter>
-    <filter id="f-jelly" x="-15%" y="-25%" width="130%" height="160%" color-interpolation-filters="sRGB">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="5" result="b"/>
-      <feGaussianBlur in="SourceGraphic" stdDeviation="7" result="glow"/>
-      <feComposite in="glow" in2="SourceAlpha" operator="in" result="gin"/>
-      <feComponentTransfer in="SourceGraphic" result="tr"><feFuncA type="linear" slope=".88"/></feComponentTransfer>
-      <feBlend in="gin" in2="tr" mode="screen" result="body"/>
-      <feSpecularLighting in="b" surfaceScale="7" specularConstant="1.4" specularExponent="34" lighting-color="#fff" result="s"><feDistantLight azimuth="235" elevation="55"/></feSpecularLighting>
-      <feComposite in="s" in2="SourceAlpha" operator="in" result="si"/>
-      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="1" seed="4" result="n"/>
-      <feColorMatrix in="n" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  6 0 0 0 -3.6" result="sug"/>
-      <feComposite in="sug" in2="SourceAlpha" operator="in" result="sugin"/>
-      <feMerge result="lit"><feMergeNode in="body"/><feMergeNode in="sugin"/><feMergeNode in="si"/></feMerge>
-      <feDropShadow dx="0" dy="10" stdDeviation="9" flood-color="#400030" flood-opacity=".28"/>
-    </filter>
-    <filter id="f-pillow" x="-15%" y="-25%" width="130%" height="160%" color-interpolation-filters="sRGB">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="7" result="b"/>
-      <feDiffuseLighting in="b" surfaceScale="10" diffuseConstant="1.25" lighting-color="#fff" result="d"><feDistantLight azimuth="240" elevation="48"/></feDiffuseLighting>
-      <feComposite in="SourceGraphic" in2="d" operator="arithmetic" k1="1" result="sh"/>
-      <feSpecularLighting in="b" surfaceScale="10" specularConstant=".55" specularExponent="12" lighting-color="#fff" result="s"><feDistantLight azimuth="235" elevation="50"/></feSpecularLighting>
-      <feComposite in="s" in2="SourceAlpha" operator="in" result="si"/>
-      <feComposite in="si" in2="sh" operator="arithmetic" k2="1" k3="1" result="lit"/>
-      <feDropShadow dx="0" dy="10" stdDeviation="9" flood-color="#10204a" flood-opacity=".3"/>
+      <feComposite in="nw" in2="lit" operator="in" result="fib"/>
+      <feBlend in="fib" in2="lit" mode="soft-light" result="tex"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" result="t2"/>
+      <feDisplacementMap in="tex" in2="t2" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+      <feDropShadow dx="0" dy="10" stdDeviation="9" flood-color="#3a0028" flood-opacity=".3"/>
     </filter>
     <filter id="f-fuzz" x="-5%" y="-5%" width="110%" height="110%">
       <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" result="t"/>
@@ -448,17 +320,16 @@ footer .links2{display:grid;gap:6px;font-family:var(--font-mono);font-size:14px;
     <nav class="links" aria-label="Разделы">
       <a href="#services">Услуги</a><a href="#course">Курс</a><a href="#packs">Пакеты</a><a href="#schedule">Расписание</a><a href="#faq">Вопросы</a>
     </nav>
-    <span data-m="candy" id="head-m"><a class="btn btn-ink btn-sm" href="#schedule">Записаться</a></span>
+    <span data-m="plush" id="head-m"><a class="btn btn-ink btn-sm" href="#schedule">Записаться</a></span>
   </div>
 </header>
 
 <main class="wrap" id="top">
-  <section class="sec" id="hero" data-sec="hero" data-m="candy" style="padding-top:24px">
-    <div class="stylelabel" data-label></div>
+  <section class="sec" id="hero" data-sec="hero" data-m="plush" style="padding-top:24px">
     <div class="hero">
       <div>
         <span class="eyebrow chip">Нейросети для жизни, а не для галочки</span>
-        <h1>Наведём <span class="puff" style="--c:var(--pink)">порядок</span> в жизни с нейросетями</h1>
+        <h1>Наведём <span class="puff" id="hero-word" style="--c:var(--pink)">порядок</span> в жизни с нейросетями</h1>
         <p class="lead">Календарь всей семьи, почта, таблицы, бюджет и домашка. Настроим за вас за один созвон или научим делать самим.</p>
         <div class="hero-cta">
           <a class="btn" href="#services">Выбрать задачу</a>
@@ -478,8 +349,7 @@ footer .links2{display:grid;gap:6px;font-family:var(--font-mono);font-size:14px;
 <div class="ticker" aria-hidden="true"><div id="ticker"></div></div>
 
 <main class="wrap">
-  <section class="sec" id="services" data-sec="services" data-m="glass">
-    <div class="stylelabel" data-label></div>
+  <section class="sec" id="services" data-sec="services" data-m="plush">
     <div class="sec-head">
       <h2><span class="puff" style="--c:var(--sky);font-size:clamp(3rem,8vw,6rem)">задачи</span></h2>
       <p>Что наведём в порядок. Кнопка со стрелкой собирает баннер для ленты, сторис и Telegram.</p>
@@ -488,8 +358,7 @@ footer .links2{display:grid;gap:6px;font-family:var(--font-mono);font-size:14px;
     <div class="grid" id="grid"></div>
   </section>
 
-  <section class="sec" id="course" data-sec="course" data-m="velvet">
-    <div class="stylelabel" data-label></div>
+  <section class="sec" id="course" data-sec="course" data-m="plush">
     <div class="course">
       <div class="l surf">
         <span class="obj" data-obj="study" aria-hidden="true"></span>
@@ -513,14 +382,12 @@ footer .links2{display:grid;gap:6px;font-family:var(--font-mono);font-size:14px;
     </div>
   </section>
 
-  <section class="sec" id="packs" data-sec="packs" data-m="holo">
-    <div class="stylelabel" data-label></div>
+  <section class="sec" id="packs" data-sec="packs" data-m="plush">
     <div class="sec-head"><h2><span class="puff" style="--c:var(--lilac);font-size:clamp(3rem,8vw,6rem)">пакеты</span></h2><p>Несколько задач за один заход дешевле, чем по отдельности.</p></div>
     <div class="packs" id="packs-list"></div>
   </section>
 
-  <section class="sec" id="schedule" data-sec="schedule" data-m="jelly">
-    <div class="stylelabel" data-label></div>
+  <section class="sec" id="schedule" data-sec="schedule" data-m="plush">
     <div class="sec-head"><h2><span class="puff" style="--c:var(--orange);font-size:clamp(3rem,8vw,6rem)">окна</span></h2><p>Выберите задачу и время. Запись подтверждается оплатой и сразу попадает в календарь.</p></div>
     <div class="sched">
       <div class="panel surf">
@@ -533,8 +400,7 @@ footer .links2{display:grid;gap:6px;font-family:var(--font-mono);font-size:14px;
     </div>
   </section>
 
-  <section class="sec" id="faq" data-sec="faq" data-m="pillow">
-    <div class="stylelabel" data-label></div>
+  <section class="sec" id="faq" data-sec="faq" data-m="plush">
     <div class="sec-head"><h2><span class="puff" style="--c:var(--blue);font-size:clamp(3rem,8vw,6rem)">вопросы</span></h2></div>
     <div class="faq">
       <div class="surf"><b>Нужно давать пароли?</b><p>Нет. Работаем по демонстрации экрана: вы вводите пароли сами, мы подсказываем и настраиваем.</p></div>
@@ -556,12 +422,11 @@ footer .links2{display:grid;gap:6px;font-family:var(--font-mono);font-size:14px;
   </footer>
 </main>
 
-<div class="dock" role="group" aria-label="Стиль сайта"><div class="dock-in" id="dock"></div></div>
 
-<div class="overlay" id="book" data-m="candy" hidden>
+<div class="overlay" id="book" data-m="plush" hidden>
   <div class="sheet surf" role="dialog" aria-modal="true" aria-labelledby="book-title" id="book-sheet"></div>
 </div>
-<div class="overlay" id="studio" data-m="candy" hidden>
+<div class="overlay" id="studio" data-m="plush" hidden>
   <div class="sheet wide surf" role="dialog" aria-modal="true" aria-labelledby="studio-title">
     <div class="sheet-head"><div><h3 id="studio-title">Баннер</h3><p class="hint" id="studio-sub"></p></div><button class="btn btn-plain close" data-close="studio" aria-label="Закрыть">×</button></div>
     <div class="studio">
@@ -585,15 +450,7 @@ footer .links2{display:grid;gap:6px;font-family:var(--font-mono);font-size:14px;
 <script src="https://cdn.jsdelivr.net/npm/three@0.149.0/build/three.min.js"></script>
 <script>
 const SITE = "ai2life.ru";
-const STYLES = {
-  candy:{n:1,name:"Карамель",d:"глянцевый лакированный пластик",sw:"linear-gradient(180deg,#FFB27A,#FF6A1F)"},
-  glass:{n:2,name:"Стекло",d:"надувное прозрачное стекло",sw:"linear-gradient(180deg,#E8F7FF,#8FD3FF)"},
-  velvet:{n:3,name:"Плюш",d:"бархат и мягкий ворс",sw:"radial-gradient(circle at 40% 35%,#FF9CC8,#D93E86)"},
-  holo:{n:4,name:"Голограмма",d:"переливающийся хром",sw:"conic-gradient(#FFB0E2,#AEEFFF,#D4BFFF,#FFEFAA,#FFB0E2)"},
-  jelly:{n:5,name:"Мармелад",d:"полупрозрачный мармелад в сахаре",sw:"radial-gradient(circle at 40% 35%,#FFB7A0,#FF4D4D)"},
-  pillow:{n:6,name:"Подушка",d:"надувной винил со строчкой",sw:"radial-gradient(circle at 40% 35%,#7FA4FF,#2F5FE0)"}
-};
-const MIX = {hero:"candy",services:"glass",course:"velvet",packs:"holo",schedule:"jelly",faq:"pillow"};
+const STYLES = {plush:{n:1,name:"Плюш-подушка",d:"бархат с ворсом, надутая форма, строчка по краю"}};
 const GROUPS = {
   study:{name:"Учёба",c:"--lime",hex:"#B9EC4A"}, time:{name:"Время",c:"--sky",hex:"#5CC6FF"}, info:{name:"Информация",c:"--pink",hex:"#FF6FAF"},
   money:{name:"Деньги",c:"--orange",hex:"#FF8A3D"}, bots:{name:"Боты",c:"--lilac",hex:"#B29BFF"}, space:{name:"Дом и место",c:"--sun",hex:"#FFD23F"}
@@ -633,7 +490,8 @@ const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const shareIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>';
 const ICONS = {}; // ICONS[style][group] = PNG data URL
 const styleOf = el => { const h = el && el.closest("[data-m]"); return h ? h.dataset.m : "candy"; };
-const objHTML = (g,st) => (ICONS[st] && ICONS[st][g]) ? `<img src="${ICONS[st][g]}" alt="">` : `<span class="orb" style="--c:var(${GROUPS[g].c})"></span>`;
+const ASSETS = {}; // files from the designer: assets/obj-<group>.png, assets/word-hero.png, assets/tex-plush.png
+const objHTML = (g,st) => ASSETS[g] ? `<img src="${ASSETS[g]}" alt="">` : (ICONS[st] && ICONS[st][g]) ? `<img src="${ICONS[st][g]}" alt="">` : `<span class="orb" style="--c:var(${GROUPS[g].c})"></span>`;
 function fillObjs(){ document.querySelectorAll("[data-obj]").forEach(el=>{ el.innerHTML = objHTML(el.dataset.obj, styleOf(el)); }); }
 
 const tickerWords = S.map(s=>s.t.replace(/[«»]/g,""));
@@ -701,29 +559,6 @@ $("#streams").innerHTML = `<h3 style="font-size:22px">Потоки курсов<
     <div class="row"><span>Осталось ${s.seats-s.taken} из ${s.seats} мест</span><button class="btn btn-ink btn-sm" data-book-stream="${k}">Записаться</button></div>
   </div>`).join("") + `<p class="note">Даты и места — пример.</p>`;
 
-/* ---------- style lab: labels, dock, apply-to-all ---------- */
-let mode = "mix";
-try{ const saved = localStorage.getItem("ai2life-style"); if(saved && (saved==="mix" || STYLES[saved])) mode = saved; }catch(_){}
-function applyMode(m, announce){
-  mode = m; try{ localStorage.setItem("ai2life-style", m); }catch(_){}
-  document.querySelectorAll("[data-sec]").forEach(sec=>{ sec.dataset.m = m==="mix" ? MIX[sec.dataset.sec] : m; });
-  const one = m==="mix" ? "candy" : m;
-  document.querySelectorAll(".overlay,#head-m").forEach(el=>el.dataset.m = one);
-  renderLabels(); renderDock(); fillObjs(); if(window.__hero) window.__hero(styleOf($("#board")));
-  if(announce) toast(m==="mix" ? "Сравнение: каждый блок в своём материале" : `Стиль «${STYLES[m].name}» на всём сайте`);
-}
-function renderLabels(){
-  document.querySelectorAll("[data-label]").forEach(el=>{
-    const k = styleOf(el), st = STYLES[k];
-    el.innerHTML = `<span class="n">Стиль ${st.n}</span><b>${st.name}</b><span>${st.d}</span>` +
-      (mode==="mix" ? `<button class="apply" data-apply="${k}">Сделать стилем всего сайта</button>` : `<button class="apply" data-apply="mix">Вернуть сравнение</button>`);
-  });
-}
-function renderDock(){
-  $("#dock").innerHTML = `<span>Стиль сайта</span><button data-apply="mix" aria-pressed="${mode==="mix"}"><i style="--sw:conic-gradient(#FF8A3D,#8FD3FF,#FF6FAF,#D4BFFF,#FF4D4D,#2F5FE0,#FF8A3D)"></i>Сравнение</button>` +
-    Object.entries(STYLES).map(([k,v])=>`<button data-apply="${k}" aria-pressed="${mode===k}"><i style="--sw:${v.sw}"></i>${v.n}. ${v.name}</button>`).join("");
-}
-
 /* ---------- booking flow ---------- */
 let booking = null;
 function openOverlay(id){ $("#"+id).hidden=false; document.body.style.overflow="hidden"; }
@@ -765,7 +600,6 @@ function startBooking(svc, when, slot){ booking={svc,when,slot}; renderBookForm(
 
 document.addEventListener("click",e=>{
   const t = e.target.closest("button,[data-close]"); if(!t) return;
-  if(t.dataset.apply){ applyMode(t.dataset.apply, true); return; }
   if(t.dataset.close){ closeOverlay(t.dataset.close); return; }
   if(t.dataset.pick){ svcSel.value=t.dataset.pick; $("#schedule").scrollIntoView({behavior:reduced?"auto":"smooth"}); toast("Выберите свободное окно"); return; }
   if(t.dataset.pack!==undefined){ svcSel.value="pack-"+t.dataset.pack; $("#schedule").scrollIntoView({behavior:reduced?"auto":"smooth"}); toast("Пакет выбран, осталось окно"); return; }
@@ -786,7 +620,20 @@ document.addEventListener("keydown",e=>{ if(e.key==="Escape"){ ["book","studio"]
 document.querySelectorAll(".overlay").forEach(o=>o.addEventListener("click",e=>{ if(e.target===o) closeOverlay(o.id); }));
 let tt; function toast(m){ const el=$("#toast"); el.textContent=m; el.hidden=false; clearTimeout(tt); tt=setTimeout(()=>el.hidden=true,2600); }
 
-applyMode(mode, false);
+
+
+/* ---------- designer assets: drop files into assets/ and they replace the generated placeholders ---------- */
+const probe = src => new Promise(res=>{ const i=new Image(); i.onload=()=>res(i.naturalWidth>0?src:null); i.onerror=()=>res(null); i.src=src; });
+(async()=>{
+  const gs = Object.keys(GROUPS);
+  const found = await Promise.all(gs.map(g=>probe(`assets/obj-${g}.png`)));
+  gs.forEach((g,i)=>{ if(found[i]) ASSETS[g]=found[i]; });
+  if(found.some(Boolean)) fillObjs();
+  const tex = await probe("assets/tex-plush.png");
+  if(tex) document.documentElement.style.setProperty("--plush-tex",`url("${tex}")`);
+  const word = await probe("assets/word-hero.png");
+  if(word){ const w=$("#hero-word"); w.style.filter="none"; w.innerHTML=`<img src="${word}" alt="порядок">`; }
+})();
 
 /* ---------- 3D objects in each material (Three.js) ---------- */
 function init3D(){
@@ -821,7 +668,7 @@ function init3D(){
   const mat = (st,g) => { const c=new T.Color(GROUPS[g].hex);
     switch(st){
       case "glass": return new T.MeshPhysicalMaterial({color:c.clone().lerp(new T.Color("#ffffff"),.35),transparent:true,opacity:.5,roughness:.03,metalness:0,clearcoat:1,clearcoatRoughness:.02,envMapIntensity:1.6,side:T.DoubleSide,depthWrite:false});
-      case "velvet": return new T.MeshPhysicalMaterial({color:c.clone().offsetHSL(0,.05,-.08),roughness:1,metalness:0,sheen:1,sheenRoughness:.45,sheenColor:c.clone().lerp(new T.Color("#ffffff"),.6),envMapIntensity:.6});
+      case "plush": case "velvet": return new T.MeshPhysicalMaterial({color:c.clone().offsetHSL(0,.05,-.08),roughness:1,metalness:0,sheen:1,sheenRoughness:.45,sheenColor:c.clone().lerp(new T.Color("#ffffff"),.6),envMapIntensity:.6});
       case "holo": return new T.MeshPhysicalMaterial({color:new T.Color("#e9e4f2").lerp(c,.25),metalness:1,roughness:.12,iridescence:1,iridescenceIOR:1.7,iridescenceThicknessRange:[150,900],envMapIntensity:1.3,flatShading:true});
       case "jelly": return new T.MeshPhysicalMaterial({color:c.clone().offsetHSL(0,.1,-.04),transparent:true,opacity:.86,roughness:.2,metalness:0,clearcoat:1,clearcoatRoughness:.08,sheen:.4,sheenColor:new T.Color("#ffffff"),envMapIntensity:1});
       case "pillow": return new T.MeshPhysicalMaterial({color:c,roughness:.5,metalness:0,clearcoat:.35,clearcoatRoughness:.4,sheen:.5,sheenColor:new T.Color("#ffffff"),envMapIntensity:.9});
@@ -861,7 +708,7 @@ let cur = {id:null, f:"feed"}, lastBlob=null;
 $("#fmt").innerHTML = Object.entries(FMT).map(([k,v])=>`<button data-fmt="${k}" aria-pressed="${k==="feed"}"><b>${v.n}</b><span>${v.s}</span></button>`).join("");
 $("#fmt").addEventListener("click",e=>{const b=e.target.closest("[data-fmt]");if(!b)return;cur.f=b.dataset.fmt;
   $("#fmt").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));drawBanner();});
-function openStudio(id){ cur.id=id; const s=byId[id]; $("#studio-title").textContent="Баннер: "+s.t; $("#studio-sub").textContent="Собран из карточки: цена, описание и 3D-объект в материале блока услуг"; openOverlay("studio"); drawBanner(); }
+function openStudio(id){ cur.id=id; const s=byId[id]; $("#studio-title").textContent="Баннер: "+s.t; $("#studio-sub").textContent="Собран из карточки: цена, описание и 3D-объект группы"; openOverlay("studio"); drawBanner(); }
 function rr(ctx,x,y,w,h,r){ ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); }
 function wrap(ctx,text,maxW){ const words=text.split(" "),lines=[];let line="";
   for(const w of words){ const test=line?line+" "+w:w; if(ctx.measureText(test).width>maxW&&line){lines.push(line);line=w;} else line=test; } if(line)lines.push(line); return lines; }
@@ -870,7 +717,7 @@ const loadImg = src => new Promise(res=>{ const i=new Image(); i.onload=()=>res(
 async function drawBanner(){
   const s=byId[cur.id], F=FMT[cur.f], W=F.w, H=F.h, ink="#1B1530", isTg=cur.f==="tg", hex=GROUPS[s.g].hex, st=styleOf($("#grid"));
   try{ await Promise.all(['1000 80px "Nunito"','900 80px "Nunito"','500 40px "Onest"','700 40px "Onest"','600 40px "IBM Plex Mono"'].map(f=>document.fonts.load(f))); }catch(_){}
-  const obj = (ICONS[st] && ICONS[st][s.g]) ? await loadImg(ICONS[st][s.g]) : null;
+  const obj = ASSETS[s.g] ? await loadImg(ASSETS[s.g]) : (ICONS[st] && ICONS[st][s.g]) ? await loadImg(ICONS[st][s.g]) : null;
   const cv=document.createElement("canvas"); cv.width=W; cv.height=H; const ctx=cv.getContext("2d");
   const lg=ctx.createLinearGradient(0,0,W*.2,H); lg.addColorStop(0,shade(hex,.5)); lg.addColorStop(.5,hex); lg.addColorStop(1,shade(hex,-.2)); ctx.fillStyle=lg; ctx.fillRect(0,0,W,H);
   const rg=ctx.createRadialGradient(W*.25,0,0,W*.25,0,W*.9); rg.addColorStop(0,"rgba(255,255,255,.6)"); rg.addColorStop(1,"rgba(255,255,255,0)"); ctx.fillStyle=rg; ctx.fillRect(0,0,W,H);
